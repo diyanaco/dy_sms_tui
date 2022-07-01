@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  diyanaAPI : "http://172.104.191.199"
 };

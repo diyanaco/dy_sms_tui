@@ -9,6 +9,7 @@ import { StudentEditComponent } from './student/student-edit/student-edit.compon
 import { StudentViewComponent } from './student/student-view/student-view.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http'
+import { StudentService } from './service/student.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http'
     AgGridModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

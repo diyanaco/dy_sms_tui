@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  diyanaAPI : "http://localhost:5000"
+  DIYANA_API : "http://localhost:5000"
 };
 
 /*

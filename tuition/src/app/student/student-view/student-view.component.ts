@@ -4,6 +4,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community'
 import { Observable } from 'rxjs';
 import { map, toArray } from 'rxjs/operators'
+import {StudentService} from './../../service/student.service'
 
 @Component({
   selector: 'app-student-view',
@@ -29,12 +30,15 @@ export class StudentViewComponent implements OnInit {
 
   // For accessing the Grid's API
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
-
+  student_id : string;
   userArray : any = [];
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private studentService : StudentService) { }
 
   ngOnInit(){
     console.log("Success")
+    this.student_id = "3"
   }
   // Example load data from sever
   // onGridReady(params: GridReadyEvent) {
@@ -45,8 +49,9 @@ export class StudentViewComponent implements OnInit {
   //   })
   // }
   onGridReady(params : GridReadyEvent){
-    this.rowData$ = this.http.get<any>('http://127.0.0.1:5000/user/1').pipe(map(x=>x.user),
-    toArray())
+    this.rowData$ = this.studentService.getStudents(this.student_id).pipe(
+      map((x :any )=>x.user),
+      toArray())
   }
 
   // Example of consuming Grid Event

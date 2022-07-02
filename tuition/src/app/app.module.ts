@@ -10,6 +10,10 @@ import { StudentViewComponent } from './student/student-view/student-view.compon
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http'
 import { StudentService } from './service/student.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -18,12 +22,16 @@ import { StudentService } from './service/student.service';
     StudentCreateComponent,
     StudentEditComponent,
     StudentViewComponent,
+    AdminLayoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AgGridModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    ComponentsModule
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]

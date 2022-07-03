@@ -10,7 +10,7 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
-    { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
+    { path: '/student', title: 'Student List',  icon:'content_paste', class: '' },
     { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
     { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
     { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
@@ -23,6 +23,7 @@ export const ROUTES: RouteInfo[] = [
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
+//TODO: #9 Create a collapsible sidebar 
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 

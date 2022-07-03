@@ -1,11 +1,21 @@
-<ag-grid-angular
-    style="width: 90%; height: 90%;"
-    class="ag-theme-alpine"
-    [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef"
-    [rowData]="rowData$ | async"
-    [rowSelection]="'multiple'"
-    [animateRows]="true"
-    (gridReady)="onGridReady($event)"
-    (cellClicked)="onCellClicked($event)">
-</ag-grid-angular>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Student List</h4>
+                        <p class="card-category">The list of all students</p>
+                    </div>
+                    <div class="card-body">
+                        <ag-grid-angular style="width: 90%; height: 90%;" class="ag-theme-alpine"
+                            [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [rowData]="rowData$ | async"
+                            [rowSelection]="'multiple'" [animateRows]="true" (gridReady)="onGridReady($event)"
+                            (cellClicked)="onCellClicked($event)">
+                        </ag-grid-angular>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

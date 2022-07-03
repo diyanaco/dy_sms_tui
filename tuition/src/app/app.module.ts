@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ComponentsModule } from './components/components.module';
+import { TableLayoutComponent } from './table-layout/table-layout.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ComponentsModule } from './components/components.module';
     StudentEditComponent,
     StudentViewComponent,
     AdminLayoutComponent,
+    TableLayoutComponent,
   ],
   imports: [
     BrowserModule,

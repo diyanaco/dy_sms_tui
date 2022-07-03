@@ -14,9 +14,9 @@ import {StudentService} from './../../service/student.service'
 export class StudentViewComponent implements OnInit {
   // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
-    { field: 'id' },
-    { field: 'first_name' },
-    { field: 'last_name' }
+    { headerName : "Student ID", field: 'id' },
+    { headerName : "First Name", field: 'first_name' },
+    { headerName :  "Last Name", field: 'last_name' }
   ];
 
   // DefaultColDef sets props common to all Columns
@@ -32,13 +32,15 @@ export class StudentViewComponent implements OnInit {
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
   student_id : string;
   userArray : any = [];
+  gridApi: any;
+  gridColumnApi: any;
   constructor(
     private http: HttpClient,
     private studentService : StudentService) { }
 
   ngOnInit(){
     console.log("Success")
-    this.student_id = "3"
+    this.student_id = "9"
   }
   // Example load data from sever
   // onGridReady(params: GridReadyEvent) {
@@ -52,6 +54,12 @@ export class StudentViewComponent implements OnInit {
     this.rowData$ = this.studentService.getStudents(this.student_id).pipe(
       map((x :any )=>x.user),
       toArray())
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+
+    //The ag-grid is not enlarging based on the page height, 
+    //so dynamically adjusting the height of the grid
+    this.gridApi.setDomLayout("autoHeight");
   }
 
   // Example of consuming Grid Event

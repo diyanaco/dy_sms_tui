@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { StudentViewComponent } from 'app/student/student-view/student-view.component';
+import { TableLayoutComponent } from 'app/table-layout/table-layout.component';
 
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 // import { UserProfileComponent } from '../../user-profile/user-profile.component';
@@ -57,6 +58,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'student',     component: StudentViewComponent },
     //{ path: 'typography',     component: TypographyComponent },
+    { path: 'table-layout', component: TableLayoutComponent}
     //{ path: 'icons',          component: IconsComponent },
     //{ path: 'maps',           component: MapsComponent },
     //{ path: 'notifications',  component: NotificationsComponent },

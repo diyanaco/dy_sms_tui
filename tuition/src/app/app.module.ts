@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ComponentsModule } from './components/components.module';
 import { TableLayoutComponent } from './table-layout/table-layout.component';
+import { FlexLayoutModule} from '@angular/flex-layout'
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TableLayoutComponent } from './table-layout/table-layout.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    ComponentsModule
+    ComponentsModule,
+    FlexLayoutModule,
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]

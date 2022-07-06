@@ -1,1 +1,26 @@
-<p>table-layout works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Table Layout</h4>
+                        <p class="card-category">Using View Container Ref</p>
+                    </div>
+                    <div class="card-body">
+                        <div fxLayout="row" fxLayoutAlign="center stretch" style="border-style: solid;">
+                            <div fxFlex>
+                                <app-student-view></app-student-view>
+                            </div>
+                        </div>
+                        <button mat-button color="primary" class="button-sandwich">Create</button>
+                        <div fxLayout="row" fxLayoutAlign="space-around center">
+                            <div style="border-style: solid">Hello first column</div>
+                            <div style="border-style: solid">Hello second column</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

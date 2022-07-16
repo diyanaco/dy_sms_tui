@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components-primary/login/login.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'login',
     pathMatch: 'full',
+    component: LoginComponent
   }, {
     path: '',
     component: AdminLayoutComponent,

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from 'app/components-primary/login/login.component';
+import { SignupComponent } from 'app/components-primary/signup/signup.component';
 import { StudentViewComponent } from 'app/components-primary/student/student-view/student-view.component';
 import { TableLayoutComponent } from 'app/components-primary/table-layout/table-layout.component';
 
@@ -16,5 +17,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'student',     component: StudentViewComponent },
     { path: 'table-layout', component: TableLayoutComponent},
-    { path: 'login', component: LoginComponent}
+    { path: 'signup', component: SignupComponent}
 ];

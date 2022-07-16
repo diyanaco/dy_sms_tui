@@ -10,7 +10,7 @@ import {UserModel} from '../model/user.model';
     providedIn : 'root'
 }
 )
-export class UserLoginService {
+export class UserAuthService {
 
   constructor(private http: HttpClient) {
   }
@@ -19,13 +19,15 @@ export class UserLoginService {
     return throwError(error.message || 'server Error');
   }
 
-  postUserLogin(email : string, password : string, iq : number){
-    let dict = {
-      "email" : email,
-      "password" : password,
-    }
+  postUserLogin(data){
     return this.http
-      .post<UserModel>(`${environment.DIYANA_API}/user-login/`, dict)
+      .post<UserModel>(`${environment.DIYANA_API}/user/login/`, data)
+      .pipe(
+        catchError(this.erroHandler));
+  }
+  postUserSignup(data){
+    return this.http
+      .post<UserModel>(`${environment.DIYANA_API}/user/signup/`, data)
       .pipe(
         catchError(this.erroHandler));
   }

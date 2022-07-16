@@ -16,6 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ComponentSecondaryModule } from 'app/components-secondary/components-secondary.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   imports: [
@@ -28,6 +31,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     MatFormFieldModule,
     FlexLayoutModule,
+    ComponentSecondaryModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   declarations: [
     LoginComponent,
@@ -39,8 +45,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     StudentViewComponent,
     AdminLayoutComponent,
     TableLayoutComponent,
-    LoginComponent,
-    //UserProfileComponent
+    //UserProfileComponent,
+    SignupComponent
   ],
   exports: [
     LoginComponent,

@@ -25,6 +25,7 @@ export class UserAuthService {
     private http: HttpClient,
     private router: Router,
   ) {
+    this.decodedToken = JSON.parse(localStorage.getItem('auth_meta')) || new DecodedToken();
   }
   headers = new HttpHeaders()
     .set('content-type', 'application/json')

@@ -4,7 +4,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community'
 import { Observable } from 'rxjs';
 import { map, toArray } from 'rxjs/operators'
-import {StudentService} from '../../../service/student.service'
+import {StudentService} from '../../../_services/student.service'
 
 @Component({
   selector: 'app-student-view',

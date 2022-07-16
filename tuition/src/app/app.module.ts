@@ -9,7 +9,7 @@ import { StudentEditComponent } from './components-primary/student/student-edit/
 import { StudentViewComponent } from './components-primary/student/student-view/student-view.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http'
-import { StudentService } from './service/student.service';
+import { StudentService } from './_services/student.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';

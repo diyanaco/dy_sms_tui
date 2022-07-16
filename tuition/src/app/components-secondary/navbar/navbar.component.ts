@@ -122,4 +122,8 @@ export class NavbarComponent implements OnInit {
       }
       return 'Dashboard';
     }
+    logout(){
+        localStorage.removeItem('auth_tkn');
+        localStorage.removeItem('auth_meta');
+    }
 }

@@ -12,35 +12,38 @@ export class AuthGuard implements CanActivate {
         private userAuth: UserAuthService,
     ) { }
 
-    private authState(): boolean {
-        if (this.isLoginOrRegister()) {
-            this.router.navigate(['/']);
-            return false;
-        }
-        return true;
-    }
+    // private authState(): boolean {
+    //     if (this.isLoginOrRegister()) {
+    //         this.router.navigate(['/']);
+    //         return false;
+    //     }
+    //     return true;
+    // }
 
-    private isLoginOrRegister(): boolean {
-        if (this.url.includes('/login') || this.url.includes('/signup')) {
-            return true;
-        }
-        return false;
-    }
+    // private isLoginOrRegister(): boolean {
+    //     console.log("thisUrl", this.url)
+    //     if (this.url.includes('/login') || this.url.includes('/signup')) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
-    private notAuthState(): boolean {
-        if (this.isLoginOrRegister()) {
-            return true;
-        }
-        this.router.navigate(['/login']);
-        return false;
-    }
+    // private notAuthState(): boolean {
+    //     if (this.isLoginOrRegister()) {
+    //         return true;
+    //     }
+    //     this.router.navigate(['/login']);
+    //     return false;
+    // }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         this.url = state.url;
         console.log(this.url)
         if (this.userAuth.isAuthenticated()) {
-            return this.authState();
+            console.log("isAuthenticated")
+            return true
         }
-        return this.notAuthState();
+        this.router.navigate(['/login'])
+        return false
     }
 }

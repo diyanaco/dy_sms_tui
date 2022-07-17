@@ -44,13 +44,14 @@ export class UserAuthService {
             this.decodedToken = jwt.decodeToken(response.user_auth.access_token);
             localStorage.setItem('auth_tkn', response.user_auth.access_token);
             localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
-            this.router.navigate(['/table-layout'])
+            this.router.navigate(['/layout/table-layout'])
           }
         }),
         catchError(this.erroHandler));
   }  
   
   public isAuthenticated(): boolean {
+    console.log(this.decodedToken)
     return moment().isBefore(moment.unix(this.decodedToken.exp));
   }
 

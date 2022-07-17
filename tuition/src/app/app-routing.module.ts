@@ -21,12 +21,15 @@ const routes: Routes =[
     component: SignupComponent
   },
   {
-    path: '',
+    path: 'layout',
     component: AdminLayoutComponent,
     children: [{
       path: '',
       loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
     }]
+  },
+  {
+    path:'**', redirectTo : 'login'
   }
 ];
 

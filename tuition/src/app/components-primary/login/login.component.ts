@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
     password: ''
   });
   returnUrl : string;
-  private decodedToken
   constructor(
     private formBuilder : FormBuilder,
     private userLoginSer : UserAuthService,

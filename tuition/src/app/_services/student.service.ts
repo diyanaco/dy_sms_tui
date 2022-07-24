@@ -26,6 +26,7 @@ export class StudentService {
 
   // GET list of public, future events
   getStudents(user_id : string): Observable<StudentModel> {
+    console.log("hello")
     return this.http
       .get<StudentModel>(`${environment.DIYANA_API}/student/` + user_id)
       .pipe(

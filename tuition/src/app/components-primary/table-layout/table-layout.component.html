@@ -5,11 +5,22 @@
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title">Table Layout</h4>
-                        <p class="card-category">Using View Container Ref</p>
+                    </div>
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Filter Table</h4>
+                        <form [formGroup]="criteriaForm">
+                            <label for="name">Name: </label>
+                            <input id="name" type="text" formControlName="fullName">
+                            <label for="name">Student ID: </label>
+                            <input id="name" type="text" formControlName="studentID">
+                            <label for="name">Class: </label>
+                            <input id="name" type="text" formControlName="class">
+                        </form>
                     </div>
                     <div class="card-body">
-                        <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container" fxLayout="row" fxLayoutAlign="center stretch" style="border-style: solid;">
-                            <div fxFlex style="overflow: hidden;" >
+                        <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container" fxLayout="row"
+                            fxLayoutAlign="center stretch" style="border-style: solid;">
+                            <div fxFlex style="overflow: hidden;">
                                 <app-student-view *ngIf="isOpen"></app-student-view>
                                 <p>Name : Muhammad Zaim</p>
                             </div>

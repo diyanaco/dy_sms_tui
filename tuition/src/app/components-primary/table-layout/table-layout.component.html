@@ -1,44 +1,38 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title">Table Layout</h4>
-                    </div>
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title">Filter Table</h4>
-                        <form [formGroup]="criteriaForm">
-                            <label for="name">Name: </label>
-                            <input id="name" type="text" formControlName="fullName">
-                            <label for="name">Student ID: </label>
-                            <input id="name" type="text" formControlName="studentID">
-                            <label for="name">Class: </label>
-                            <input id="name" type="text" formControlName="class">
-                        </form>
-                    </div>
-                    <div class="card-body">
-                        <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container" fxLayout="row"
-                            fxLayoutAlign="center stretch" style="border-style: solid;">
-                            <div fxFlex style="overflow: hidden;">
-                                <app-student-view *ngIf="isOpen"></app-student-view>
-                                <p>Name : Muhammad Zaim</p>
-                            </div>
-                        </div>
-                        <!-- <nav>
-                            <button type="button" (click)="toggle()">Toggle Open/Close</button>
-                        </nav> -->
-                        <!-- <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
-                            <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
-                        </div> -->
-                        <button mat-button color="primary" class="button-sandwich" (click)="toggle()">Create</button>
-                        <div fxLayout="row" fxLayoutAlign="space-around center" *ngIf="!isOpen">
-                            <div style="border-style: solid">Hello first column</div>
-                            <div style="border-style: solid">Hello second column</div>
-                        </div>
-                    </div>
+    <!-- Cards with media area -->
+    <mat-card class="example-card">
+        <mat-card-title-group>
+            <mat-card-title>Table Layout for Student</mat-card-title>
+            <mat-card-subtitle>
+                <form [formGroup]="criteriaForm">
+                    <label for="name">Name: </label>
+                    <input id="name" type="text" formControlName="fullName">
+                    <label for="name">Student ID: </label>
+                    <input id="name" type="text" formControlName="studentID">
+                    <label for="name">Class: </label>
+                    <input id="name" type="text" formControlName="class">
+                </form>
+            </mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+            <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container" fxLayout="row"
+                fxLayoutAlign="center stretch" style="border-style: solid;">
+                <div fxFlex style="overflow: hidden;">
+                    <app-student-view *ngIf="isOpen"></app-student-view>
+                    <p>Name : Muhammad Zaim</p>
                 </div>
             </div>
-        </div>
-    </div>
+            <!-- <nav>
+        <button type="button" (click)="toggle()">Toggle Open/Close</button>
+    </nav> -->
+            <!-- <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+        <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+    </div> -->
+            <button mat-button color="primary" class="button-sandwich" (click)="toggle()">Create</button>
+            <div fxLayout="row" fxLayoutAlign="space-around center" *ngIf="!isOpen">
+                <div style="border-style: solid">Hello first column</div>
+                <div style="border-style: solid">Hello second column</div>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </div>

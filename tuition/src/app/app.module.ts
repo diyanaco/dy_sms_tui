@@ -19,15 +19,19 @@ import { TableLayoutComponent } from './components-primary/table-layout/table-la
 import { FlexLayoutModule} from '@angular/flex-layout';
 import { LoginComponent } from './components-primary/login/login.component'
 import { RouterModule } from '@angular/router';
-
+import { MatSliderModule} from "@angular/material/slider"
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    MatSliderModule,
+    MatCardModule,
     RouterModule,
     ComponentSecondaryModule,
     ComponentPrimaryModule,
+    BrowserAnimationsModule,
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]

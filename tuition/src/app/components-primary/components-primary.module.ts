@@ -19,6 +19,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ComponentSecondaryModule } from 'app/components-secondary/components-secondary.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -34,6 +36,8 @@ import { SignupComponent } from './signup/signup.component';
     ComponentSecondaryModule,
     ReactiveFormsModule,
     FormsModule,
+    MatCardModule,
+    MatSliderModule,
   ],
   declarations: [
     LoginComponent,

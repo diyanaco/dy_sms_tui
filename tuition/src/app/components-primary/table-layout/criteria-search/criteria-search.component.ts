@@ -3,7 +3,7 @@ import { OnInit, OnDestroy, Component } from "@angular/core";
 @Component({
   selector : "app-criteria-search",
   styleUrls : ["criteria-search.component.scss"],
-  templateUrl : "criteria-search.component.ts"
+  templateUrl : "criteria-search.component.html"
 })
 export class CriteriaSearchComponent implements OnInit, OnDestroy{
     ngOnInit(){

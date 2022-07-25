@@ -44,6 +44,7 @@ export class UserAuthService {
             this.decodedToken = jwt.decodeToken(response.user_auth.access_token);
             localStorage.setItem('auth_tkn', response.user_auth.access_token);
             localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
+            localStorage.setItem('Authorization', "Bearer ".concat(response.user_auth.access_token));
             this.router.navigate(['/layout/table-layout'])
           }
         }),

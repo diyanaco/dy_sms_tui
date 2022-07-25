@@ -7,6 +7,7 @@ import { UserModel } from '../model/user.model';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as moment from 'moment';
+import { AuthUserModel } from 'app/model/auth.model';
 
 const jwt = new JwtHelperService();
 
@@ -32,6 +33,7 @@ export class UserAuthService {
     .set('Access-Control-Allow-Origin', '*');
 
   erroHandler(error: HttpErrorResponse) {
+    console.log(error)
     return throwError(error.message || 'server Error');
   }
 
@@ -44,6 +46,7 @@ export class UserAuthService {
             this.decodedToken = jwt.decodeToken(response.user_auth.access_token);
             localStorage.setItem('auth_tkn', response.user_auth.access_token);
             localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
+            localStorage.setItem('Authorization', "Bearer ".concat(response.user_auth.access_token));
             this.router.navigate(['/layout/table-layout'])
           }
         }),
@@ -68,7 +71,7 @@ export class UserAuthService {
 
   postUserSignup(data) {
     return this.http
-      .post<UserModel>(`${environment.DIYANA_API}/user/signup/`, data)
+      .post<AuthUserModel>(`${environment.DIYANA_API}/user/signup`, data)
       .pipe(
         catchError(this.erroHandler));
   }

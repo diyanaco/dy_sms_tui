@@ -10,7 +10,9 @@ import { UserAuthService } from 'app/_services/user-auth.service';
 export class SignupComponent implements OnInit {
   signupForm = this.formBuilder.group({
     email: '',
-    password: ''
+    password: '',
+    first_name :'',
+    last_name : ''
   });
 
   constructor(
@@ -21,10 +23,13 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(): void {
-    let postLogin = {
+    let postJson = {
       "email" : this.signupForm.get('email').value,
-      "password": this.signupForm.get('password').value
+      "password": this.signupForm.get('password').value,
+      "first_name" : this.signupForm.get('first_name').value,
+      "last_name" : this.signupForm.get("last_name").value
+
     }
-    this.userLoginSer.postUserSignup(postLogin).subscribe()
+    this.userLoginSer.postUserSignup(postJson).subscribe(response => console.log(response))
   }
 }

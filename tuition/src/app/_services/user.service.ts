@@ -25,18 +25,10 @@ export class StudentService {
   }
 
   // GET list of public, future events
-  getStudent(student_id : string): Observable<StudentModel> {
+  getStudents(user_id : string): Observable<StudentModel> {
     console.log("hello")
     return this.http
-      .get<StudentModel>(`${environment.DIYANA_API}/student/` + student_id)
-      .pipe(
-        catchError(this.erroHandler));
-  }
-
-  getStudentAll(): Observable<StudentModel> {
-    console.log("hello")
-    return this.http
-      .get<StudentModel>(`${environment.DIYANA_API}/student/all`)
+      .get<StudentModel>(`${environment.DIYANA_API}/student/` + user_id)
       .pipe(
         catchError(this.erroHandler));
   }

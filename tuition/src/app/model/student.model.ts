@@ -1,8 +1,14 @@
 export class StudentModel {
     constructor(
-      public id: number,
-      public first_name?: string,
-      public last_name?: string,
-      public iq? : number
+      public status_code : string,
+      public message : string,
+      public error : string,
+      public student : {
+        id: string,
+        user_id: string,
+        fav_sub: string,
+        created_date : string,
+        updated_date : string
+      }
     ) { }
   }

@@ -14,9 +14,11 @@ import {StudentService} from '../../../_services/student.service'
 export class StudentViewComponent implements OnInit {
   // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
+    { headerName : "User ID", field: 'user_id' },
     { headerName : "Student ID", field: 'id' },
-    { headerName : "First Name", field: 'first_name' },
-    { headerName :  "Last Name", field: 'last_name' }
+    { headerName : "Fav Subject", field: 'fav_sub' },
+    { headerName :  "Created Date", field: 'created_date' },
+    { headerName :  "Updated Date", field: 'updated_date' }
   ];
 
   // DefaultColDef sets props common to all Columns
@@ -51,9 +53,8 @@ export class StudentViewComponent implements OnInit {
   //   })
   // }
   onGridReady(params : GridReadyEvent){
-    this.rowData$ = this.studentService.getStudents(this.student_id).pipe(
-      map((x :any )=>x.user),
-      toArray())
+    this.rowData$ = this.studentService.getStudentAll().pipe(
+      map((x :any )=>x.student))
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 

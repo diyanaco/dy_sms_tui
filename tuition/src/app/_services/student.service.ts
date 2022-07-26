@@ -40,4 +40,12 @@ export class StudentService {
       .pipe(
         catchError(this.erroHandler));
   }
+
+  postStudent(data): Observable<StudentModel> {
+    return this.http
+      .post<StudentModel>(`${environment.DIYANA_API}/student/`, data)
+      .pipe(
+        catchError(this.erroHandler)
+      )
+  }
 }

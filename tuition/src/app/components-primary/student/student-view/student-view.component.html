@@ -8,7 +8,8 @@
                         <p class="card-category">The list of all students</p>
                     </div>
                     <div class="card-body"> -->
-                        <div fxLayout="row" fxLayoutAlign="center">
+                        <div fxLayout="column" fxLayoutAlign="center">
+                            <button mat-raised-button routerLink="/layout/student/create" class="btn btn-danger pull-right col-md-2">Create Student</button>
                             <ag-grid-angular style="width: 90%; height: 90%;" class="ag-theme-alpine"
                                 [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [rowData]="rowData$ | async"
                                 [rowSelection]="'multiple'" [animateRows]="true" (gridReady)="onGridReady($event)"

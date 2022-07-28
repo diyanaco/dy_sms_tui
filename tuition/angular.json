@@ -127,5 +127,7 @@
       }
     }
   },
-  "defaultProject": "tuition"
+  "cli": {
+    "analytics": "a99e09b7-cebc-4ee5-acca-1e5766fdd526"
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormControl, FormGroup } from '@angular/forms';
+import {  UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { LevelService } from 'app/_services/level.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
@@ -15,14 +15,14 @@ export class LevelCreateComponent implements OnInit {
   selected: string
   userId: string
 
-  levelForm = new FormGroup({
-    first_name: new FormControl(''),
-    last_name: new FormControl(''),
-    fav_sub: new FormControl,
-    level: new FormControl,
-    guardian: new FormControl,
-    package_set: new FormControl,
-    education_id: new FormControl
+  levelForm = new UntypedFormGroup({
+    first_name: new UntypedFormControl(''),
+    last_name: new UntypedFormControl(''),
+    fav_sub: new UntypedFormControl,
+    level: new UntypedFormControl,
+    guardian: new UntypedFormControl,
+    package_set: new UntypedFormControl,
+    education_id: new UntypedFormControl
   });
   constructor(
     private $level: LevelService,

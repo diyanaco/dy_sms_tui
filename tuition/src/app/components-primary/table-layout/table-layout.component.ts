@@ -7,7 +7,7 @@ import {
   transition,
   // ...
 } from '@angular/animations';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-table-layout',
@@ -39,10 +39,10 @@ export class TableLayoutComponent implements OnInit {
   isOpen = true;
   childComponentName: string
   //TODO: #25 Generate a dynamic search criteria form based on specific listing component columns
-  criteriaForm = new FormGroup({
-    fullName: new FormControl(''),
-    studentID: new FormControl(''),
-    class: new FormControl(''),
+  criteriaForm = new UntypedFormGroup({
+    fullName: new UntypedFormControl(''),
+    studentID: new UntypedFormControl(''),
+    class: new UntypedFormControl(''),
   })
   // toggle() {
   //   this.isOpen = !this.isOpen;

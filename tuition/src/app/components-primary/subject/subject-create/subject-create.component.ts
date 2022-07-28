@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { SubjectService } from 'app/_services/subject.service';
 import { UserService } from 'app/_services/user.service'
 import { Observable } from 'rxjs';
@@ -18,18 +18,18 @@ export class SubjectCreateComponent implements OnInit {
   selected: string
   userId: string
 
-  subjectForm = new FormGroup({
-    first_name: new FormControl(''),
-    last_name: new FormControl(''),
-    fav_sub: new FormControl,
-    level: new FormControl,
-    guardian: new FormControl,
-    package_set: new FormControl,
-    education_id: new FormControl
+  subjectForm = new UntypedFormGroup({
+    first_name: new UntypedFormControl(''),
+    last_name: new UntypedFormControl(''),
+    fav_sub: new UntypedFormControl,
+    level: new UntypedFormControl,
+    guardian: new UntypedFormControl,
+    package_set: new UntypedFormControl,
+    education_id: new UntypedFormControl
   });
   constructor(
     private $subject: SubjectService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private $user: UserService
   ) { }
 

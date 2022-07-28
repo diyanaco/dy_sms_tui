@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {UserModel} from '../model/user.model';
 import { StudentModel } from 'app/model/student.model';
+import { ResponseModel } from 'app/model/response.model';
 
 
 @Injectable({
@@ -25,25 +26,24 @@ export class StudentService {
   }
 
   // GET list of public, future events
-  getStudent(student_id : string): Observable<StudentModel> {
-    console.log("hello")
+  getStudent(student_id : string): Observable<ResponseModel<StudentModel>> {
     return this.http
-      .get<StudentModel>(`${environment.DIYANA_API}/student/` + student_id)
+      .get<ResponseModel<StudentModel>>(`${environment.DIYANA_API}/student/` + student_id)
       .pipe(
         catchError(this.erroHandler));
   }
 
-  getStudentAll(): Observable<StudentModel> {
+  getStudentAll(): Observable<ResponseModel<StudentModel>> {
     console.log("hello")
     return this.http
-      .get<StudentModel>(`${environment.DIYANA_API}/student/all`)
+      .get<ResponseModel<StudentModel>>(`${environment.DIYANA_API}/student/all`)
       .pipe(
         catchError(this.erroHandler));
   }
 
-  postStudent(data): Observable<StudentModel> {
+  postStudent(data): Observable<ResponseModel<StudentModel>> {
     return this.http
-      .post<StudentModel>(`${environment.DIYANA_API}/student/`, data)
+      .post<ResponseModel<StudentModel>>(`${environment.DIYANA_API}/student/`, data)
       .pipe(
         catchError(this.erroHandler)
       )

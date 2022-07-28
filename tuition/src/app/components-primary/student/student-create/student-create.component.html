@@ -14,7 +14,7 @@
                                     <mat-form-field appearance="fill">
                                         <mat-label>Choose from regitered user</mat-label>
                                         <mat-select (selectionChange)="onUserChange($event)">
-                                            <mat-option *ngFor="let confirmed_user of (confirmed_user | async)"
+                                            <mat-option *ngFor="let confirmed_user of ($confirmed_user | async)"
                                                 [value]="confirmed_user.id">
                                                 {{confirmed_user.first_name }} {{confirmed_user.last_name}}
                                             </mat-option>
@@ -37,16 +37,32 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <mat-form-field class="example-full-width">
+                                    <!-- <mat-form-field class="example-full-width">
                                         <input matInput placeholder="Favorite Subject" type="text"
                                             formControlName="fav_sub">
+                                    </mat-form-field> -->
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Choose from subjects</mat-label>
+                                        <mat-select (selectionChange)="onSubjectChange($event)">
+                                            <mat-option *ngFor="let subject of ($subject_list | async)"
+                                                [value]="subject.id">
+                                                {{subject.name }}
+                                            </mat-option>
+                                        </mat-select>
                                     </mat-form-field>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <mat-form-field class="example-full-width">
+                                <div class="col-md-6">
+                                    <!-- <mat-form-field class="example-full-width">
                                         <input matInput placeholder="Level" type="text" formControlName="level">
+                                    </mat-form-field> -->
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Choose from level</mat-label>
+                                        <mat-select (selectionChange)="onLevelChange($event)">
+                                            <mat-option *ngFor="let level of ($level_list | async)"
+                                                [value]="level.id">
+                                                {{level.name }} }} {{level.rank }}
+                                            </mat-option>
+                                        </mat-select>
                                     </mat-form-field>
                                 </div>
                             </div>

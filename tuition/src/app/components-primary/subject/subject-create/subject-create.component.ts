@@ -35,8 +35,8 @@ export class SubjectCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.$subjectList = this.$subject.getSubjectAll().pipe(map(x => {
-      this.tempUserArray = x.subject
-      return x.subject;
+      this.tempUserArray = x.data
+      return x.data;
     }))
   }
 

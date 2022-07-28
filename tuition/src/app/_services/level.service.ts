@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {UserModel} from '../model/user.model';
 import { LevelModel } from 'app/model/level.model';
+import { ResponseModel } from 'app/model/response.model';
 
 
 @Injectable({
@@ -20,23 +21,23 @@ export class LevelService {
     return throwError(error.message || 'server Error');
   }
 
-  getLevel(level_id : string): Observable<LevelModel> {
+  getLevel(level_id : string): Observable<ResponseModel<LevelModel>> {
     return this.http
-      .get<LevelModel>(`${environment.DIYANA_API}/level/` + level_id)
+      .get<ResponseModel<LevelModel>>(`${environment.DIYANA_API}/level/` + level_id)
       .pipe(
         catchError(this.erroHandler));
   }
 
-  getLevelAll(): Observable<LevelModel> {
+  getLevelAll(): Observable<ResponseModel<LevelModel>> {
     return this.http
-      .get<LevelModel>(`${environment.DIYANA_API}/level/all`)
+      .get<ResponseModel<LevelModel>>(`${environment.DIYANA_API}/level/all`)
       .pipe(
         catchError(this.erroHandler));
   }
 
-  postLevel(data): Observable<LevelModel> {
+  postLevel(data): Observable<ResponseModel<LevelModel>> {
     return this.http
-      .post<LevelModel>(`${environment.DIYANA_API}/level/`, data)
+      .post<ResponseModel<LevelModel>>(`${environment.DIYANA_API}/level/`, data)
       .pipe(
         catchError(this.erroHandler)
       )

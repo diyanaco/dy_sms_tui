@@ -30,8 +30,8 @@ export class LevelCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.$levelList = this.$level.getLevelAll().pipe(map(x => {
-      this.tempUserArray = x.level
-      return x.level;
+      this.tempUserArray = x.data
+      return x.data;
     }))
   }
 

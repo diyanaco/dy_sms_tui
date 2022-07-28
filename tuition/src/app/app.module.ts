@@ -21,6 +21,10 @@ import { LoginComponent } from './components-primary/login/login.component'
 import { RouterModule } from '@angular/router';
 import { MatSliderModule} from "@angular/material/slider"
 import {MatCardModule} from '@angular/material/card';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { primaryReducer } from './store/primary.reducer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +36,12 @@ import {MatCardModule} from '@angular/material/card';
     ComponentSecondaryModule,
     ComponentPrimaryModule,
     BrowserAnimationsModule,
+    // StoreDevtoolsModule.instrument({
+    //   maxAge: 25,
+    //   // logOnly: environment.production,
+    // }),
+    // StoreModule.forRoot(primaryReducer)
+    StoreModule.forFeature("primary", primaryReducer),
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]

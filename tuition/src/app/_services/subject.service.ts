@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {UserModel} from '../model/user.model';
 import { SubjectModel } from 'app/model/subject.model';
+import { ResponseModel } from 'app/model/response.model';
 
 
 @Injectable({
@@ -20,23 +21,23 @@ export class SubjectService {
     return throwError(error.message || 'server Error');
   }
 
-  getSubject(subject_id : string): Observable<SubjectModel> {
+  getSubject(subject_id : string): Observable<ResponseModel<SubjectModel>> {
     return this.http
-      .get<SubjectModel>(`${environment.DIYANA_API}/subject/` + subject_id)
+      .get<ResponseModel<SubjectModel>>(`${environment.DIYANA_API}/subject/` + subject_id)
       .pipe(
         catchError(this.erroHandler));
   }
 
-  getSubjectAll(): Observable<SubjectModel> {
+  getSubjectAll(): Observable<ResponseModel<SubjectModel>> {
     return this.http
-      .get<SubjectModel>(`${environment.DIYANA_API}/subject/all`)
+      .get<ResponseModel<SubjectModel>>(`${environment.DIYANA_API}/subject/all`)
       .pipe(
         catchError(this.erroHandler));
   }
 
-  postSubject(data): Observable<SubjectModel> {
+  postSubject(data): Observable<ResponseModel<SubjectModel>> {
     return this.http
-      .post<SubjectModel>(`${environment.DIYANA_API}/subject/`, data)
+      .post<ResponseModel<SubjectModel>>(`${environment.DIYANA_API}/subject/`, data)
       .pipe(
         catchError(this.erroHandler)
       )

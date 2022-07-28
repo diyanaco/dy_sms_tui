@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
+import { LevelCreateComponent } from 'app/components-primary/level/level-create/level-create.component';
 import { LevelViewComponent } from 'app/components-primary/level/level-view/level-view.component';
 import { LoginComponent } from 'app/components-primary/login/login.component';
 import { SignupComponent } from 'app/components-primary/signup/signup.component';
 import { StudentCreateComponent } from 'app/components-primary/student/student-create/student-create.component';
 import { StudentViewComponent } from 'app/components-primary/student/student-view/student-view.component';
+import { SubjectCreateComponent } from 'app/components-primary/subject/subject-create/subject-create.component';
 import { SubjectViewComponent } from 'app/components-primary/subject/subject-view/subject-view.component';
 import { TableLayoutComponent } from 'app/components-primary/table-layout/table-layout.component';
 import { AuthGuard } from 'app/_guards/auth-guard.service';
@@ -45,12 +47,34 @@ export const AdminLayoutRoutes: Routes = [
     {
         path: 'subject',
         component: SubjectViewComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        children : [
+            {
+                path: '',
+                redirectTo : 'create',
+                pathMatch :' full'
+            },
+            {
+                path: 'create',
+                component: SubjectCreateComponent,
+                canActivate: [AuthGuard]
+        }]
     },
     {
         path: 'level',
         component: LevelViewComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        children : [
+            {
+                path: '',
+                redirectTo : 'create',
+                pathMatch :' full'
+            },
+            {
+                path: 'create',
+                component: LevelCreateComponent,
+                canActivate: [AuthGuard]
+        }]
     },
     {
         path: 'create',

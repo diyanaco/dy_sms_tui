@@ -2,7 +2,7 @@
     <!-- Cards with media area -->
     <mat-card class="example-card">
         <mat-card-title-group>
-            <mat-card-title>Table Layout for Student</mat-card-title>
+            <mat-card-title>Table Layout for {{childComponentName}}</mat-card-title>
             <mat-card-subtitle>
                 <form [formGroup]="criteriaForm">
                     <label for="name">Name: </label>
@@ -15,7 +15,7 @@
             </mat-card-subtitle>
         </mat-card-title-group>
         <mat-card-content>
-            <router-outlet></router-outlet>
+            <router-outlet (activate)="componentAdded($event)"></router-outlet>
             <!-- <app-student-view></app-student-view> -->
         </mat-card-content>
         <!-- <mat-card-content>

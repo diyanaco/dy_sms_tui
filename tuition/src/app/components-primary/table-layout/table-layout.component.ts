@@ -1,4 +1,4 @@
-import { Component, OnInit,HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, EventEmitter } from '@angular/core';
 import {
   trigger,
   state,
@@ -37,11 +37,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class TableLayoutComponent implements OnInit {
   isOpen = true;
+  childComponentName: string
   //TODO: #25 Generate a dynamic search criteria form based on specific listing component columns
   criteriaForm = new FormGroup({
-    fullName : new FormControl(''),
-    studentID : new FormControl(''),
-    class : new FormControl(''),
+    fullName: new FormControl(''),
+    studentID: new FormControl(''),
+    class: new FormControl(''),
   })
   // toggle() {
   //   this.isOpen = !this.isOpen;
@@ -51,4 +52,20 @@ export class TableLayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  componentAdded($event) {
+    console.log($event.constructor.name)
+    // this.childComponentName =
+    switch ($event.constructor.name) {
+      case "StudentViewComponent":
+        this.childComponentName = "Student"
+        break
+      case "LevelViewComponent":
+        this.childComponentName = "Level"
+        break
+      case "SubjectViewComponent":
+        this.childComponentName = "Subject"
+        break
+    }
+
+  }
 }

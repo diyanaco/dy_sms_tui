@@ -9,7 +9,7 @@
                     </div>
                     <div class="card-body"> -->
                         <div fxLayout="column" fxLayoutAlign="center">
-                            <button mat-raised-button class="btn btn-danger pull-right col-md-2" (click)="onCreate()">Create Student</button>
+                            <button mat-raised-button class="btn btn-danger pull-right col-md-2" (click)="onCreate()">Create Subject</button>
                             <ag-grid-angular style="width: 90%; height: 90%;" class="ag-theme-alpine"
                                 [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [rowData]="rowData$ | async"
                                 [rowSelection]="'multiple'" [animateRows]="true" (gridReady)="onGridReady($event)"

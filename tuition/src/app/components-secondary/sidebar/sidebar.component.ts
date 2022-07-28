@@ -27,6 +27,7 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ['./sidebar.component.css']
 })
 //TODO: #9 Create a collapsible sidebar 
+//TODO #33 Highlight active sidebar
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 

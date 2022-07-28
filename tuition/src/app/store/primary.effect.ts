@@ -5,8 +5,9 @@ import { StudentService } from 'app/_services/student.service';
 import { SubjectService } from 'app/_services/subject.service';
 import { EMPTY } from 'rxjs';
 import { createEffect } from '@ngrx/effects';
+import { of } from 'rxjs'
 import { map, mergeMap, catchError } from 'rxjs/operators';
-import { levelGetAllActionInit, levelGetAllActionSuccess, studentGetAllActionInit, studentGetAllActionSuccess, subjectGetAllActionInit, subjectGetAllActionSuccess } from './primary.action';
+import { levelGetAllActionFailure, levelGetAllActionInit, levelGetAllActionSuccess, studentGetAllActionFailure, studentGetAllActionInit, studentGetAllActionSuccess, subjectGetAllActionFailure, subjectGetAllActionInit, subjectGetAllActionSuccess } from './primary.action';
 
 @Injectable()
 export class PrimaryEffects {
@@ -17,8 +18,12 @@ export class PrimaryEffects {
         ofType(studentGetAllActionInit),
         mergeMap(() => this.student$.getStudentAll()
           .pipe(
-            map(student => studentGetAllActionSuccess()),
-            catchError(() => EMPTY)
+            //TODO 
+            map((res: any) => {
+              console.log(res)
+              return studentGetAllActionSuccess({ student: res.student })
+            }),
+            catchError((err) => of(studentGetAllActionFailure({ message: err })))
           )))
   })
 
@@ -28,8 +33,11 @@ export class PrimaryEffects {
         ofType(levelGetAllActionInit),
         mergeMap(() => this.level$.getLevelAll()
           .pipe(
-            map(level => levelGetAllActionSuccess()),
-            catchError(() => EMPTY)
+            map((res: any) => {
+              console.log(res)
+              return levelGetAllActionSuccess({ level: res.level })
+            }),
+            catchError((err) => of(levelGetAllActionFailure({ message: err })))
           )))
   })
 
@@ -39,8 +47,11 @@ export class PrimaryEffects {
         ofType(subjectGetAllActionInit),
         mergeMap(() => this.subject$.getSubjectAll()
           .pipe(
-            map(subject => subjectGetAllActionSuccess()),
-            catchError(() => EMPTY)
+            map((res: any) => {
+              console.log(res)
+              return subjectGetAllActionSuccess({ subject: res.subject })
+            }),
+            catchError((err) => of(subjectGetAllActionFailure({ message: err })))
           )))
   })
 

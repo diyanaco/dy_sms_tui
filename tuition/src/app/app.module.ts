@@ -38,13 +38,15 @@ import { PrimaryEffects } from './store/primary.effect';
     ComponentSecondaryModule,
     ComponentPrimaryModule,
     BrowserAnimationsModule,
-    // StoreDevtoolsModule.instrument({
-    //   maxAge: 25,
-    //   // logOnly: environment.production,
-    // }),
+    StoreModule.forRoot({}), 
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      // logOnly: environment.production,
+    }),
     // StoreModule.forRoot(primaryReducer)
     StoreModule.forFeature("primary", primaryReducer),
-    EffectsModule.forFeature([PrimaryEffects])
+    EffectsModule.forRoot([]),
+    EffectsModule.forFeature([PrimaryEffects]),
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]

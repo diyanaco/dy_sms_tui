@@ -5,11 +5,11 @@ import { SubjectModel } from "app/model/subject.model";
 export interface PrimaryState {
     subject: SubjectModel[];
     level: LevelModel[];
-    student : StudentModel[]
+    student : any[]
   }
 
   export const initialState : PrimaryState = {
-    subject : null,
-    level : null,
-    student : null
+    subject : [],
+    level : [],
+    student : []
   }

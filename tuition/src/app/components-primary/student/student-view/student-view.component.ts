@@ -55,8 +55,8 @@ export class StudentViewComponent implements OnInit {
   //   })
   // }
   onGridReady(params : GridReadyEvent){
-    this.rowData$ = this.studentService.getStudentAll().pipe(
-      map((x :any )=>x.student))
+    // this.rowData$ = this.studentService.getStudentAll().pipe(
+    //   map((x :any )=>x.student))
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 

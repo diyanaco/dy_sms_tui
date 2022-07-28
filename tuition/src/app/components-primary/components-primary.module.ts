@@ -23,6 +23,10 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule} from '@angular/material/select'
+import { LevelCreateComponent } from './level/level-create/level-create.component';
+import { LevelViewComponent } from './level/level-view/level-view.component';
+import { SubjectCreateComponent } from './subject/subject-create/subject-create.component';
+import { SubjectViewComponent } from './subject/subject-view/subject-view.component';
 
 @NgModule({
   imports: [
@@ -54,7 +58,11 @@ import { MatSelectModule} from '@angular/material/select'
     AdminLayoutComponent,
     TableLayoutComponent,
     //UserProfileComponent,
-    SignupComponent
+    SignupComponent,
+    LevelCreateComponent,
+    LevelViewComponent,
+    SubjectCreateComponent,
+    SubjectViewComponent
   ],
   exports: [
     LoginComponent,

@@ -4,18 +4,19 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community'
 import { Observable } from 'rxjs';
 import { map, toArray } from 'rxjs/operators'
-import {SubjectService} from '../../../_services/subject.service'
+import {LevelService} from '../../../_services/level.service'
 
 @Component({
-  selector: 'app-subject-view',
-  templateUrl: './subject-view.component.html',
-  styleUrls: ['./subject-view.component.scss']
+  selector: 'app-level-view',
+  templateUrl: './level-view.component.html',
+  styleUrls: ['./level-view.component.scss']
 })
-export class SubjectViewComponent implements OnInit {
+export class LevelViewComponent implements OnInit {
   // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
-    { headerName : "Subject ID", field: 'id' },
-    { headerName : "Subject Name", field: 'name' },
+    { headerName : "Level ID", field: 'id' },
+    { headerName : "Level Name", field: 'name' },
+    { headerName : "Level Rank", field: 'rank' },
   ];
 
   // DefaultColDef sets props common to all Columns
@@ -29,21 +30,21 @@ export class SubjectViewComponent implements OnInit {
 
   // For accessing the Grid's API
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
-  subject_id : string;
+  level_id : string;
   userArray : any = [];
   gridApi: any;
   gridColumnApi: any;
   constructor(
     private http: HttpClient,
-    private subjectService : SubjectService) { }
+    private levelService : LevelService) { }
 
   ngOnInit(){
-    this.subject_id = "9"
+    this.level_id = "9"
   }
 
   onGridReady(params : GridReadyEvent){
-    this.rowData$ = this.subjectService.getSubjectAll().pipe(
-      map((x :any )=>x.subject))
+    this.rowData$ = this.levelService.getLevelAll().pipe(
+      map((x :any )=>x.level))
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.gridApi.setDomLayout("autoHeight");

@@ -8,12 +8,18 @@
                         <p class="card-category">Complete your student profile</p>
                     </div>
                     <div class="card-body">
-                        <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()">
+                        <form [formGroup]="levelForm" (ngSubmit)="onSubmit()">
                             <div class="row">
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput #myInput placeholder="First Name" (input)="myInput.value"
-                                            formControlName="first_name" type="text">
+                                        <input matInput #myInput placeholder="Level Name" (input)="myInput.value"
+                                            formControlName="name" type="text">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput #myInput placeholder="Rank" (input)="myInput.value"
+                                            formControlName="rank" type="text">
                                     </mat-form-field>
                                 </div>
                             </div>

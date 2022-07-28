@@ -39,7 +39,7 @@ export class UserAuthService {
 
   postUserLogin(data) {
     return this.http
-      .post<UserModel>(`${environment.DIYANA_API}/user/login`, data, { headers: this.headers })
+      .post<AuthUserModel>(`${environment.DIYANA_API}/user/login`, data, { headers: this.headers })
       .pipe(
         map(response => {
           if (response.status_code === 200) {

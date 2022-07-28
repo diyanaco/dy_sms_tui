@@ -22,6 +22,7 @@ import { SignupComponent } from './signup/signup.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule} from '@angular/material/select'
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatCardModule,
     MatSliderModule,
+    MatSelectModule
   ],
   declarations: [
     LoginComponent,

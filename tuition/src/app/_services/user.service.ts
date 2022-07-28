@@ -4,31 +4,30 @@ import {Observable, throwError} from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {UserModel} from '../model/user.model';
-import { StudentModel } from 'app/model/student.model';
-
 
 @Injectable({
     providedIn : 'root'
 }
 )
-export class StudentService {
+export class UserService {
 
   constructor(private http: HttpClient) {
   }
-
-//   private static _handleError(err: HttpErrorResponse | any) {
-//     return Observable.throw(err.message || 'Error: Unable to complete request.');
-//   }
 
   erroHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'server Error');
   }
 
-  // GET list of public, future events
-  getStudents(user_id : string): Observable<StudentModel> {
-    console.log("hello")
+  getUser(user_id : string): Observable<UserModel> {
     return this.http
-      .get<StudentModel>(`${environment.DIYANA_API}/student/` + user_id)
+      .get<UserModel>(`${environment.DIYANA_API}/user/` + user_id)
+      .pipe(
+        catchError(this.erroHandler));
+  }
+
+  getUserAll(): Observable<UserModel> {
+    return this.http
+      .get<UserModel>(`${environment.DIYANA_API}/user/all`)
       .pipe(
         catchError(this.erroHandler));
   }

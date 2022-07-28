@@ -8,23 +8,37 @@
                         <p class="card-category">Complete your student profile</p>
                     </div>
                     <div class="card-body">
-                        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()"> 
+                        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+                            <div class="row" id="dropdown">
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Choose from regitered user</mat-label>
+                                        <mat-select (selectionChange)="onUserChange($event)">
+                                            <mat-option *ngFor="let confirmed_user of (confirmed_user | async)"
+                                                [value]="confirmed_user.id">
+                                                {{confirmed_user.first_name }} {{confirmed_user.last_name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="First Name" formControlName="first_name">
+                                        <input matInput #myInput placeholder="First Name" (input)="myInput.value"
+                                            formControlName="first_name" type="text">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Last Name" type="email" formControlName="last_name">
+                                        <input matInput placeholder="Last Name" type="text" formControlName="last_name">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Favorite Subject" type="text" 
+                                        <input matInput placeholder="Favorite Subject" type="text"
                                             formControlName="fav_sub">
                                     </mat-form-field>
                                 </div>
@@ -56,7 +70,7 @@
                                 </div>
                             </div>
                             <button mat-raised-button type="submit" class="btn btn-danger pull-right">Create</button>
-                        </form>  
+                        </form>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -72,7 +86,8 @@
                         <h6 class="card-category text-gray">CEO / Co-Founder</h6>
                         <h4 class="card-title">Alec Thompson</h4>
                         <p class="card-description">
-                            Don't be scared of the truth because we need to restart the human foundation in truth And I love you
+                            Don't be scared of the truth because we need to restart the human foundation in truth And I
+                            love you
                             like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
                         </p>
                         <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>

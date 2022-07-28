@@ -66,6 +66,7 @@ export class StudentCreateComponent implements OnInit {
       let tempUser = this.tempUserArray.filter(x => x.id == this.userId)[0]
       this.studentForm.get('first_name').setValue(tempUser.first_name)
       this.studentForm.get('last_name').setValue(tempUser.last_name)
+      this.studentForm.get('fav_sub').setValue(tempUser.fav_sub)
 
       //TODO #31 Solve autopopulating from observable
       // this.confirmed_user.pipe(

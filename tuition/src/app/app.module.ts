@@ -24,6 +24,8 @@ import {MatCardModule} from '@angular/material/card';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { primaryReducer } from './store/primary.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { PrimaryEffects } from './store/primary.effect';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { primaryReducer } from './store/primary.reducer';
     // }),
     // StoreModule.forRoot(primaryReducer)
     StoreModule.forFeature("primary", primaryReducer),
+    EffectsModule.forFeature([PrimaryEffects])
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]

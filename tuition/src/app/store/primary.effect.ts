@@ -9,7 +9,7 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 import { levelGetAllActionInit, levelGetAllActionSuccess, studentGetAllActionInit, studentGetAllActionSuccess, subjectGetAllActionInit, subjectGetAllActionSuccess } from './primary.action';
 
 @Injectable()
-export class StudentEffects {
+export class PrimaryEffects {
 
   loadStudent$ = createEffect(() => {
     return this.actions$

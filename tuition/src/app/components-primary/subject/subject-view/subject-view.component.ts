@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community'
 import { Observable } from 'rxjs';
@@ -34,6 +35,7 @@ export class SubjectViewComponent implements OnInit {
   gridApi: any;
   gridColumnApi: any;
   constructor(
+    private router : Router,
     private http: HttpClient,
     private subjectService : SubjectService) { }
 
@@ -56,5 +58,8 @@ export class SubjectViewComponent implements OnInit {
   clearSelection(): void {
     this.agGrid.api.deselectAll();
   }
-
+  
+  onCreate(){
+    this.router.navigateByUrl('/layout/form-layout/create-subject')
+  }
 }

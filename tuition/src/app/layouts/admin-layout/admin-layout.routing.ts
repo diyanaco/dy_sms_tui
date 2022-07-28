@@ -25,60 +25,92 @@ export const AdminLayoutRoutes: Routes = [
         component: UserProfileComponent,
         canActivate: [AuthGuard]
     },
+    // {
+    //     path: 'student',
+    //     children : [
+    //         {
+    //             path: '',
+    //             redirectTo : 'create',
+    //             pathMatch :' full'
+    //         },
+    //         {
+    //             path: 'create',
+    //             component: StudentCreateComponent,
+    //             canActivate: [AuthGuard]
+    //     }]
+    // },
     {
-        path: 'student',
-        children : [
+        path:'form-layout',
+        children: [
             {
-                path: '',
-                redirectTo : 'create',
-                pathMatch :' full'
+                path: 'create-student',
+                component : StudentCreateComponent
             },
             {
-                path: 'create',
-                component: StudentCreateComponent,
-                canActivate: [AuthGuard]
-        }]
+                path: 'create-level',
+                component : LevelCreateComponent
+            },
+            {
+                path : 'create-subject',
+                component : SubjectCreateComponent
+            }
+
+        ]
     },
     {
         path: 'table-layout',
         component: TableLayoutComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'subject',
-        component: SubjectViewComponent,
         canActivate: [AuthGuard],
         children : [
             {
-                path: '',
-                redirectTo : 'create',
-                pathMatch :' full'
+                path: 'level',
+                component: LevelViewComponent,
             },
             {
-                path: 'create',
-                component: SubjectCreateComponent,
-                canActivate: [AuthGuard]
-        }]
-    },
-    {
-        path: 'level',
-        component: LevelViewComponent,
-        canActivate: [AuthGuard],
-        children : [
-            {
-                path: '',
-                redirectTo : 'create',
-                pathMatch :' full'
+                path: 'student',
+                component: StudentViewComponent,
             },
             {
-                path: 'create',
-                component: LevelCreateComponent,
-                canActivate: [AuthGuard]
-        }]
+                path: 'subject',
+                component: SubjectViewComponent,
+            }
+        ]
     },
-    {
-        path: 'create',
-        component: StudentCreateComponent,
-        canActivate: [AuthGuard]
-    },
+    // {
+    //     path: 'subject',
+    //     component: SubjectViewComponent,
+    //     canActivate: [AuthGuard],
+    //     children : [
+    //         {
+    //             path: '',
+    //             redirectTo : 'create',
+    //             pathMatch :' full'
+    //         },
+    //         {
+    //             path: 'create',
+    //             component: SubjectCreateComponent,
+    //             canActivate: [AuthGuard]
+    //     }]
+    // },
+    // {
+    //     path: 'level',
+    //     component: LevelViewComponent,
+    //     canActivate: [AuthGuard],
+    //     children : [
+    //         {
+    //             path: '',
+    //             redirectTo : 'create',
+    //             pathMatch :' full'
+    //         },
+    //         {
+    //             path: 'create',
+    //             component: LevelCreateComponent,
+    //             canActivate: [AuthGuard]
+    //     }]
+    // },
+    // {
+    //     path: 'create',
+    //     component: StudentCreateComponent,
+    //     canActivate: [AuthGuard]
+    // },
 ];

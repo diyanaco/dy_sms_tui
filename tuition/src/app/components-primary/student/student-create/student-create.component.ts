@@ -161,19 +161,19 @@ export class StudentCreateComponent implements OnInit , AfterViewInit, OnDestroy
       //   )
     }
   }
-  onSubjectChange(event: MatSelectChange) {
-    if (event) {
-      let tempUser = this.tempSubjectArray.filter(x => x.id == event.value)[0]
-      this.studentForm.get('fav_sub').setValue(tempUser.name)
-    }
-  }
+  // onSubjectChange(event: MatSelectChange) {
+  //   if (event) {
+  //     let tempUser = this.tempSubjectArray.filter(x => x.id == event.value)[0]
+  //     this.studentForm.get('fav_sub').setValue(tempUser.name)
+  //   }
+  // }
 
-  onLevelChange(event: MatSelectChange) {
-    if (event) {
-      let tempUser = this.tempLevelArray.filter(x => x.id == event.value)[0]
-      this.studentForm.get('level').setValue(tempUser.name)
-    }
-  }
+  // onLevelChange(event: MatSelectChange) {
+  //   if (event) {
+  //     let tempUser = this.tempLevelArray.filter(x => x.id == event.value)[0]
+  //     this.studentForm.get('level').setValue(tempUser.name)
+  //   }
+  // }
 }
 
 

@@ -6,11 +6,11 @@ export const primaryReducer = createReducer(
     initialState,
     on(studentGetAllActionSuccess, (state, action) => {
         console.log(action)
-        return{ ...state, student: action.student }
+        return{ ...state, students: action.student }
     }),
-    on(levelGetAllActionSuccess, (state, action) => ({ ...state, level: action.level })),
-    on(subjectGetAllActionSuccess, (state, action) => ({ ...state, subject: action.subject })),
-    on(confirmedUserGetAllActionSuccess, (state, action) => ({ ...state, confirmed_user: action.confirmedUser })),
+    on(levelGetAllActionSuccess, (state, action) => ({ ...state, levels: action.level })),
+    on(subjectGetAllActionSuccess, (state, action) => ({ ...state, subjects: action.subject })),
+    on(confirmedUserGetAllActionSuccess, (state, action) => ({ ...state, confirmed_users: action.confirmedUser })),
     
     
     // on(levelGetAllActionInit, (state) => ({ ...state, level: state.level })),

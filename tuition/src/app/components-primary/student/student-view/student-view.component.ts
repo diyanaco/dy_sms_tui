@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community'
 import { StudentModel } from 'app/model/student.model';
-import { selectAllStudent, selectAllSubject } from 'app/store/primary.selector';
+import { selectStudents } from 'app/store/primary.selector';
 import { PrimaryState } from 'app/store/primary.state';
 import { Observable } from 'rxjs';
 import { map, toArray } from 'rxjs/operators'
@@ -62,7 +62,7 @@ export class StudentViewComponent implements OnInit {
   onGridReady(params : GridReadyEvent){
     // this.rowData$ = this.studentService.getStudentAll().pipe(
     //   map((x :any )=>x.student))
-    this.rowData$ = this.store.select(selectAllStudent)
+    this.rowData$ = this.store.select(selectStudents)
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 

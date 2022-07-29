@@ -13,7 +13,7 @@ import { Store } from '@ngrx/store';
 import { StudentModel } from 'app/model/student.model';
 import { SubjectModel } from 'app/model/subject.model';
 import { LevelModel } from 'app/model/level.model';
-import { selectAllConfirmedUser, selectAllLevel, selectAllStudent, selectAllSubject } from 'app/store/primary.selector';
+import { selectLevels, selectStudents, selectSubjects, selectUsers } from 'app/store/primary.selector';
 
 
 @Component({
@@ -63,10 +63,10 @@ export class StudentCreateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.$confirmed_user = this.store.select(selectAllConfirmedUser)
-    // this.$student_list = this.store.select(selectAllStudent)
-    this.$level_list = this.store.select(selectAllLevel)
-    this.$subject_list = this.store.select(selectAllSubject)
+    this.$confirmed_user = this.store.select(selectUsers)
+    this.$student_list = this.store.select(selectStudents)
+    this.$level_list = this.store.select(selectLevels)
+    this.$subject_list = this.store.select(selectSubjects)
     // this.$confirmed_user = this.$user.getUserAll().pipe(map(x => {
     //   this.tempUserArray = x.user
     //   return x.user;

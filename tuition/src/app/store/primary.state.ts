@@ -4,15 +4,15 @@ import { SubjectModel } from "app/model/subject.model";
 import { UserModel } from "app/model/user.model";
 
 export interface PrimaryState {
-    subject: SubjectModel[];
-    level: LevelModel[];
-    student : StudentModel[];
-    confirmed_user : UserModel[];
+    subjects: SubjectModel[];
+    levels: LevelModel[];
+    students : StudentModel[];
+    confirmed_users : UserModel[];
   }
 
   export const initialState : PrimaryState = {
-    subject : [],
-    level : [],
-    student : [],
-    confirmed_user : []
+    subjects : [],
+    levels : [],
+    students : [],
+    confirmed_users : []
   }

@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {UserModel} from '../model/user.model';
+import { ResponseModel } from 'app/model/response.model';
 
 @Injectable({
     providedIn : 'root'
@@ -18,16 +19,16 @@ export class UserService {
     return throwError(error.message || 'server Error');
   }
 
-  getUser(user_id : string): Observable<UserModel> {
+  getUser(user_id : string): Observable<ResponseModel<UserModel>> {
     return this.http
-      .get<UserModel>(`${environment.DIYANA_API}/user/` + user_id)
+      .get<ResponseModel<UserModel>>(`${environment.DIYANA_API}/user/` + user_id)
       .pipe(
         catchError(this.erroHandler));
   }
 
-  getUserAll(): Observable<UserModel> {
+  getUserAll(): Observable<ResponseModel<UserModel>> {
     return this.http
-      .get<UserModel>(`${environment.DIYANA_API}/user/all`)
+      .get<ResponseModel<UserModel>>(`${environment.DIYANA_API}/user/all`)
       .pipe(
         catchError(this.erroHandler));
   }

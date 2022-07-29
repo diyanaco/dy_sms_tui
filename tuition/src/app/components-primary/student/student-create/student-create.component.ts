@@ -8,6 +8,13 @@ import { filter, map, mergeMap } from 'rxjs/operators'
 import { MatSelectChange } from '@angular/material/select';
 import { SubjectService } from 'app/_services/subject.service';
 import { LevelService } from 'app/_services/level.service';
+import { PrimaryState } from 'app/store/primary.state';
+import { Store } from '@ngrx/store';
+import { StudentModel } from 'app/model/student.model';
+import { SubjectModel } from 'app/model/subject.model';
+import { LevelModel } from 'app/model/level.model';
+import { selectAllConfirmedUser, selectAllLevel, selectAllStudent, selectAllSubject } from 'app/store/primary.selector';
+
 
 @Component({
   selector: 'app-student-create',
@@ -18,9 +25,10 @@ export class StudentCreateComponent implements OnInit {
   //TODO #30 Seperate message from the model itself
   //UserModel can be split into response message and actual UserModel
   //confirmed_user will be of that new UserModel without the response message
-  $confirmed_user: Observable<any>
-  $subject_list: Observable<any>
-  $level_list: Observable<any>
+  $confirmed_user : Observable<UserModel[]>
+  $student_list: Observable<StudentModel[]>
+  $subject_list: Observable<SubjectModel[]>
+  $level_list: Observable<LevelModel[]>
   tempUserArray: any[]
   tempLevelArray: any[]
   tempSubjectArray: any[]
@@ -50,10 +58,15 @@ export class StudentCreateComponent implements OnInit {
     private $level: LevelService,
     private $subject: SubjectService,
     private formBuilder: UntypedFormBuilder,
-    private $user: UserService
+    private $user: UserService,
+    private store : Store<PrimaryState>
   ) { }
 
   ngOnInit(): void {
+    this.$confirmed_user = this.store.select(selectAllConfirmedUser)
+    // this.$student_list = this.store.select(selectAllStudent)
+    this.$level_list = this.store.select(selectAllLevel)
+    this.$subject_list = this.store.select(selectAllSubject)
     // this.$confirmed_user = this.$user.getUserAll().pipe(map(x => {
     //   this.tempUserArray = x.user
     //   return x.user;
@@ -132,3 +145,5 @@ export class StudentCreateComponent implements OnInit {
     }
   }
 }
+
+

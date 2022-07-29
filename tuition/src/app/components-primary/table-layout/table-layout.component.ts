@@ -10,7 +10,7 @@ import {
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { PrimaryState } from 'app/store/primary.state';
-import { levelGetAllActionInit, studentGetAllActionInit, subjectGetAllActionInit } from 'app/store/primary.action';
+import { confirmedUserGetAllActionInit, levelGetAllActionInit, studentGetAllActionInit, subjectGetAllActionInit } from 'app/store/primary.action';
 
 @Component({
   selector: 'app-table-layout',
@@ -55,6 +55,7 @@ export class TableLayoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(confirmedUserGetAllActionInit())
     this.store.dispatch(studentGetAllActionInit())
     this.store.dispatch(levelGetAllActionInit())
     this.store.dispatch(subjectGetAllActionInit())

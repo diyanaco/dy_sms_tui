@@ -1,8 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community'
+import { StudentModel } from 'app/model/student.model';
+import { selectAllStudent, selectAllSubject } from 'app/store/primary.selector';
+import { PrimaryState } from 'app/store/primary.state';
 import { Observable } from 'rxjs';
 import { map, toArray } from 'rxjs/operators'
 import {StudentService} from '../../../_services/student.service'
@@ -29,7 +33,7 @@ export class StudentViewComponent implements OnInit {
   };
 
   // Data that gets displayed in the grid
-  public rowData$!: Observable<any[]>;
+  public rowData$!: Observable<StudentModel[]>;
 
   // For accessing the Grid's API
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
@@ -40,7 +44,8 @@ export class StudentViewComponent implements OnInit {
   constructor(
     private router : Router,
     private http: HttpClient,
-    private studentService : StudentService) { }
+    private studentService : StudentService,
+    private store : Store<PrimaryState>) { }
 
   ngOnInit(){
     console.log("Success")
@@ -57,6 +62,7 @@ export class StudentViewComponent implements OnInit {
   onGridReady(params : GridReadyEvent){
     // this.rowData$ = this.studentService.getStudentAll().pipe(
     //   map((x :any )=>x.student))
+    this.rowData$ = this.store.select(selectAllStudent)
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { StudentService } from 'app/_services/student.service';
 import { UserService } from 'app/_services/user.service'
 import { Observable } from 'rxjs';
 import { UserModel } from 'app/model/user.model';
-import { filter, map, mergeMap } from 'rxjs/operators'
+import { filter, map, mergeMap, first, take } from 'rxjs/operators'
 import { MatSelectChange } from '@angular/material/select';
 import { SubjectService } from 'app/_services/subject.service';
 import { LevelService } from 'app/_services/level.service';
@@ -16,6 +16,7 @@ import { LevelModel } from 'app/model/level.model';
 import { selectBranches, selectGuardians, selectLevels, selectStudents, selectSubjects, selectUsers } from 'app/store/primary.selector';
 import { BranchModel } from 'app/model/branch.model';
 import { GuardianModel } from 'app/model/guardian.model';
+import { SubSink } from 'subsink';
 
 
 @Component({
@@ -23,11 +24,12 @@ import { GuardianModel } from 'app/model/guardian.model';
   templateUrl: './student-create.component.html',
   styleUrls: ['./student-create.component.css']
 })
-export class StudentCreateComponent implements OnInit {
+export class StudentCreateComponent implements OnInit , AfterViewInit, OnDestroy{
   //TODO #30 Seperate message from the model itself
   //UserModel can be split into response message and actual UserModel
   //confirmed_user will be of that new UserModel without the response message
-  $confirmed_user : Observable<UserModel[]>
+  $confirmed_user: Observable<UserModel[]>
+  $user_selected: Observable<UserModel>
   $student_list: Observable<StudentModel[]>
   $subject_list: Observable<SubjectModel[]>
   $level_list: Observable<LevelModel[]>
@@ -38,6 +40,7 @@ export class StudentCreateComponent implements OnInit {
   tempSubjectArray: any[]
   selected: string
   userId: string
+  private subs = new SubSink()
 
   // studentForm = this.formBuilder.group({
   //   first_name: new FormControl(),
@@ -63,7 +66,7 @@ export class StudentCreateComponent implements OnInit {
     private $subject: SubjectService,
     private formBuilder: UntypedFormBuilder,
     private $user: UserService,
-    private store : Store<PrimaryState>
+    private store: Store<PrimaryState>
   ) { }
 
   ngOnInit(): void {
@@ -101,6 +104,14 @@ export class StudentCreateComponent implements OnInit {
     //   return x.subject;
     // }))
   }
+  
+  ngOnDestroy(){
+    this.subs.unsubscribe();
+  }
+
+  ngAfterViewInit(): void {
+      
+  }
 
   onSubmit() {
     let postJson = {
@@ -114,10 +125,23 @@ export class StudentCreateComponent implements OnInit {
   onUserChange(event: MatSelectChange) {
     if (event) {
       this.userId = event.value
-      let tempUser = this.tempUserArray.filter(x => x.id == this.userId)[0]
-      this.studentForm.get('first_name').setValue(tempUser.first_name)
-      this.studentForm.get('last_name').setValue(tempUser.last_name)
-      this.studentForm.get('fav_sub').setValue(tempUser.fav_sub)
+      this.subs.sink = this.store.select(selectUsers).pipe(
+        map(user => {
+          let filteredUser = user.filter(user => user.id == this.userId)[0]
+          console.log(filteredUser.first_name)
+          this.studentForm.get('first_name').setValue(filteredUser.first_name)
+          this.studentForm.get('last_name').setValue(filteredUser.last_name)
+          return user[0]
+        })).subscribe()
+
+
+      // this.$confirmed_user.pipe(
+      //   filter(x=>x.id == this.user_id),
+      //   map(x=>{
+      //   this.studentForm.get('first_name').setValue(x[0].first_name)
+      //   this.studentForm.get('last_name').setValue(x.last_name)
+      //   this.studentForm.get('fav_sub').setValue(x.fav_sub)
+      // }))
 
       //TODO #31 Solve autopopulating from observable
       // this.confirmed_user.pipe(

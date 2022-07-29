@@ -58,8 +58,7 @@
                                     <mat-form-field appearance="fill">
                                         <mat-label>Choose from level</mat-label>
                                         <mat-select (selectionChange)="onLevelChange($event)">
-                                            <mat-option *ngFor="let level of ($level_list | async)"
-                                                [value]="level.id">
+                                            <mat-option *ngFor="let level of ($level_list | async)" [value]="level.id">
                                                 {{level.name }} }} {{level.rank }}
                                             </mat-option>
                                         </mat-select>
@@ -73,7 +72,7 @@
                                         <mat-select (selectionChange)="onLevelChange($event)">
                                             <mat-option *ngFor="let guardian of ($guardian_list | async)"
                                                 [value]="guardian.id">
-                                                {{guardian.name }} }} {{guardian.rank }}
+                                                {{guardian.primary_user_id }} || {{guardian.secondary_user_id }}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -90,7 +89,7 @@
                                         <mat-select (selectionChange)="onLevelChange($event)">
                                             <mat-option *ngFor="let branch of ($branch_list | async)"
                                                 [value]="branch.id">
-                                                {{branch.name }} }} {{branch.rank }}
+                                                {{branch.name }} || {{branch.type }}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>

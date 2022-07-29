@@ -1,4 +1,6 @@
 import { createAction , props} from '@ngrx/store';
+import { BranchModel } from 'app/model/branch.model';
+import { GuardianModel } from 'app/model/guardian.model';
 import { LevelModel } from 'app/model/level.model';
 import { StudentModel } from 'app/model/student.model';
 import { SubjectModel } from 'app/model/subject.model';
@@ -20,6 +22,14 @@ const CONFIRMED_USER_GET_ALL_INIT = '[User Component] Retrieve data Init'
 const CONFIRMED_USER_GET_ALL_SUCCESS = '[User Component] Retrieve data Success'
 const CONFIRMED_USER_GET_ALL_FAILURE = '[User Component] Retrieve data Failure'
 
+const GUARDIAN_GET_ALL_INIT = '[Guardian Component] Retrieve data Init'
+const GUARDIAN_GET_ALL_SUCCESS = '[Guardian Component] Retrieve data Success'
+const GUARDIAN_GET_ALL_FAILURE = '[Guardian Component] Retrieve data Failure'
+
+const BRANCH_GET_ALL_INIT = '[Branch Component] Retrieve data Init'
+const BRANCH_GET_ALL_SUCCESS = '[Branch Component] Retrieve data Success'
+const BRANCH_GET_ALL_FAILURE = '[Branch Component] Retrieve data Failure'
+
 export const studentGetAllActionInit = createAction(STUDENT_GET_ALL_INIT);
 export const studentGetAllActionSuccess = createAction(STUDENT_GET_ALL_SUCCESS, props<{student : StudentModel[]}>());
 export const studentGetAllActionFailure = createAction(STUDENT_GET_ALL_FAILURE, props<{message : string}>());
@@ -35,4 +45,12 @@ export const subjectGetAllActionFailure = createAction(SUBJECT_GET_ALL_FAILURE, 
 export const confirmedUserGetAllActionInit = createAction(CONFIRMED_USER_GET_ALL_INIT);
 export const confirmedUserGetAllActionSuccess = createAction(CONFIRMED_USER_GET_ALL_SUCCESS, props<{confirmedUser : UserModel[]}>());
 export const confirmedUserGetAllActionFailure = createAction(CONFIRMED_USER_GET_ALL_FAILURE, props<{message : string}>());
+
+export const guardianGetAllActionInit = createAction(GUARDIAN_GET_ALL_INIT);
+export const guardianGetAllActionSuccess = createAction(GUARDIAN_GET_ALL_SUCCESS, props<{guardian : GuardianModel[]}>());
+export const guardianGetAllActionFailure = createAction(GUARDIAN_GET_ALL_FAILURE, props<{message : string}>());
+
+export const branchGetAllActionInit = createAction(BRANCH_GET_ALL_INIT);
+export const branchGetAllActionSuccess = createAction(BRANCH_GET_ALL_SUCCESS, props<{branch : BranchModel[]}>());
+export const branchGetAllActionFailure = createAction(BRANCH_GET_ALL_FAILURE, props<{message : string}>());
 

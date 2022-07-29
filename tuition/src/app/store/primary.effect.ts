@@ -7,8 +7,21 @@ import { EMPTY } from 'rxjs';
 import { createEffect } from '@ngrx/effects';
 import { of } from 'rxjs'
 import { map, mergeMap, catchError } from 'rxjs/operators';
-import { levelGetAllActionFailure, confirmedUserGetAllActionInit,levelGetAllActionInit,confirmedUserGetAllActionFailure, confirmedUserGetAllActionSuccess,levelGetAllActionSuccess, studentGetAllActionFailure, studentGetAllActionInit, studentGetAllActionSuccess, subjectGetAllActionFailure, subjectGetAllActionInit, subjectGetAllActionSuccess } from './primary.action';
+import {
+  levelGetAllActionFailure, confirmedUserGetAllActionInit,
+  branchGetAllActionInit, levelGetAllActionInit, confirmedUserGetAllActionFailure, 
+  confirmedUserGetAllActionSuccess, levelGetAllActionSuccess, studentGetAllActionFailure, 
+  studentGetAllActionInit, studentGetAllActionSuccess, subjectGetAllActionFailure, 
+  subjectGetAllActionInit, subjectGetAllActionSuccess, branchGetAllActionSuccess, 
+  branchGetAllActionFailure,
+  guardianGetAllActionInit,
+  guardianGetAllActionSuccess,
+  guardianGetAllActionFailure
+} from './primary.action';
 import { UserService } from 'app/_services';
+import { BranchModel } from 'app/model/branch.model';
+import { BranchService } from 'app/_services/branch.service';
+import { GuardianService } from 'app/_services/guardian.service';
 
 @Injectable()
 export class PrimaryEffects {
@@ -71,11 +84,42 @@ export class PrimaryEffects {
           )))
   })
 
+  loadBranch$ = createEffect(() => {
+    return this.actions$
+      .pipe(
+        ofType(branchGetAllActionInit),
+        mergeMap(() => this.branch$.getBranchAll()
+          .pipe(
+            map((res: any) => {
+              console.log(res)
+              return branchGetAllActionSuccess({ branch: res.branch })
+            }),
+            catchError((err) => of(branchGetAllActionFailure({ message: err })))
+          )))
+  })
+
+  loadGuardian$ = createEffect(() => {
+    return this.actions$
+      .pipe(
+        ofType(guardianGetAllActionInit),
+        mergeMap(() => this.guardian$.getGuardianAll()
+          .pipe(
+            map((res: any) => {
+              console.log(res)
+              return guardianGetAllActionSuccess({ guardian: res.guardian })
+            }),
+            catchError((err) => of(guardianGetAllActionFailure({ message: err })))
+          )))
+  })
+
+
   constructor(
     private actions$: Actions,
     private student$: StudentService,
     private level$: LevelService,
     private subject$: SubjectService,
-    private user$ : UserService
+    private user$: UserService,
+    private branch$: BranchService,
+    private guardian$ : GuardianService
   ) { }
 }

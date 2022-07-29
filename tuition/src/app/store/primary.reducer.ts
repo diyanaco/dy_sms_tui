@@ -1,5 +1,5 @@
 import { ActionReducer, createReducer, on } from '@ngrx/store';
-import { studentGetAllActionSuccess,levelGetAllActionSuccess, confirmedUserGetAllActionSuccess,   subjectGetAllActionSuccess, levelGetAllActionInit, subjectGetAllActionInit } from './primary.action';
+import { studentGetAllActionSuccess,levelGetAllActionSuccess, confirmedUserGetAllActionSuccess,   subjectGetAllActionSuccess, levelGetAllActionInit, subjectGetAllActionInit, branchGetAllActionSuccess, guardianGetAllActionSuccess } from './primary.action';
 import { initialState, PrimaryState } from './primary.state';
 
 export const primaryReducer = createReducer(
@@ -11,6 +11,8 @@ export const primaryReducer = createReducer(
     on(levelGetAllActionSuccess, (state, action) => ({ ...state, levels: action.level })),
     on(subjectGetAllActionSuccess, (state, action) => ({ ...state, subjects: action.subject })),
     on(confirmedUserGetAllActionSuccess, (state, action) => ({ ...state, confirmed_users: action.confirmedUser })),
+    on(guardianGetAllActionSuccess, (state, action) => ({ ...state, guardians: action.guardian })),
+    on(branchGetAllActionSuccess, (state, action) => ({ ...state, branches: action.branch })),
     
     
     // on(levelGetAllActionInit, (state) => ({ ...state, level: state.level })),

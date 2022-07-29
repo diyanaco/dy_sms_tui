@@ -20,6 +20,14 @@ export const selectLevels = createSelector(
     selectPrimaryState,
     (state) => state.levels
 )
+export const selectGuardians = createSelector(
+    selectPrimaryState,
+    (state) => state.guardians
+)
+export const selectBranches = createSelector(
+    selectPrimaryState,
+    (state) => state.branches
+)
 //   );
 // export const selectAllSubject = (state: PrimaryState) => state.subject;
 // export const selectAllLevel = (state: PrimaryState) => state.level;

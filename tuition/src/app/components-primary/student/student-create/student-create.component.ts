@@ -13,7 +13,9 @@ import { Store } from '@ngrx/store';
 import { StudentModel } from 'app/model/student.model';
 import { SubjectModel } from 'app/model/subject.model';
 import { LevelModel } from 'app/model/level.model';
-import { selectLevels, selectStudents, selectSubjects, selectUsers } from 'app/store/primary.selector';
+import { selectBranches, selectGuardians, selectLevels, selectStudents, selectSubjects, selectUsers } from 'app/store/primary.selector';
+import { BranchModel } from 'app/model/branch.model';
+import { GuardianModel } from 'app/model/guardian.model';
 
 
 @Component({
@@ -29,6 +31,8 @@ export class StudentCreateComponent implements OnInit {
   $student_list: Observable<StudentModel[]>
   $subject_list: Observable<SubjectModel[]>
   $level_list: Observable<LevelModel[]>
+  $branch_list: Observable<BranchModel[]>
+  $guardian_list: Observable<GuardianModel[]>
   tempUserArray: any[]
   tempLevelArray: any[]
   tempSubjectArray: any[]
@@ -67,6 +71,8 @@ export class StudentCreateComponent implements OnInit {
     this.$student_list = this.store.select(selectStudents)
     this.$level_list = this.store.select(selectLevels)
     this.$subject_list = this.store.select(selectSubjects)
+    this.$branch_list = this.store.select(selectBranches)
+    this.$guardian_list = this.store.select(selectGuardians)
     // this.$confirmed_user = this.$user.getUserAll().pipe(map(x => {
     //   this.tempUserArray = x.user
     //   return x.user;

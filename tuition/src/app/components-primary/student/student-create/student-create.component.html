@@ -68,8 +68,14 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Guardian" type="text" formControlName="guardian">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Choose from guardian</mat-label>
+                                        <mat-select (selectionChange)="onLevelChange($event)">
+                                            <mat-option *ngFor="let guardian of ($guardian_list | async)"
+                                                [value]="guardian.id">
+                                                {{guardian.name }} }} {{guardian.rank }}
+                                            </mat-option>
+                                        </mat-select>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
@@ -79,9 +85,14 @@
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Education ID" type="text"
-                                            formControlName="education_id">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Choose from branch</mat-label>
+                                        <mat-select (selectionChange)="onLevelChange($event)">
+                                            <mat-option *ngFor="let branch of ($branch_list | async)"
+                                                [value]="branch.id">
+                                                {{branch.name }} }} {{branch.rank }}
+                                            </mat-option>
+                                        </mat-select>
                                     </mat-form-field>
                                 </div>
                             </div>

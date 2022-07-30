@@ -1,0 +1,14 @@
+<mat-card-title-group>
+    <mat-card-title>Table Layout for {{tableName}}</mat-card-title>
+    <mat-card-subtitle>
+        <form [formGroup]="form">
+            <label for="name">Name: </label>
+            <input id="name" type="text" formControlName="fullName">
+            <label for="name">Student ID: </label>
+            <input id="name" type="text" formControlName="studentID">
+            <label for="name">Class: </label>
+            <input id="name" type="text" formControlName="class">
+        </form>
+        <!-- <app-criteria-search [form]="criteriaForm"></app-criteria-search> -->
+    </mat-card-subtitle>
+</mat-card-title-group>

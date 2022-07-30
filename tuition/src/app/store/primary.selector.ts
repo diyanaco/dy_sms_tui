@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { BranchModel } from 'app/model/branch.model';
 import { StudentModel } from 'app/model/student.model';
 import { UserModel } from 'app/model/user.model';
 import { PrimaryState } from './primary.state';
@@ -27,6 +28,17 @@ export const selectGuardians = createSelector(
 export const selectBranches = createSelector(
     selectPrimaryState,
     (state) => state.branches
+)
+export const selectStudentByBranch = (props: { branch_id: string }) => createSelector(
+    selectStudents,
+    selectBranches,
+    (students: StudentModel[], branches: BranchModel[]) => {
+        if (students && branches) {
+            return students.filter((student: StudentModel) => student.branch_id === props.branch_id);
+        } else {
+            return students;
+        }
+    }
 )
 //   );
 // export const selectAllSubject = (state: PrimaryState) => state.subject;

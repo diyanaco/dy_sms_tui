@@ -27,6 +27,7 @@ import { LevelCreateComponent } from './level/level-create/level-create.componen
 import { LevelViewComponent } from './level/level-view/level-view.component';
 import { SubjectCreateComponent } from './subject/subject-create/subject-create.component';
 import { SubjectViewComponent } from './subject/subject-view/subject-view.component';
+import { CriteriaSearchComponent } from './table-layout/criteria-search/criteria-search.component';
 
 @NgModule({
   imports: [
@@ -62,7 +63,8 @@ import { SubjectViewComponent } from './subject/subject-view/subject-view.compon
     LevelCreateComponent,
     LevelViewComponent,
     SubjectCreateComponent,
-    SubjectViewComponent
+    SubjectViewComponent,
+    CriteriaSearchComponent
   ],
   exports: [
     LoginComponent,

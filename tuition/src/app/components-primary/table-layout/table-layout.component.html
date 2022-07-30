@@ -4,14 +4,15 @@
         <mat-card-title-group>
             <mat-card-title>Table Layout for {{childComponentName}}</mat-card-title>
             <mat-card-subtitle>
-                <form [formGroup]="criteriaForm">
+                <!-- <form [formGroup]="criteriaForm">
                     <label for="name">Name: </label>
                     <input id="name" type="text" formControlName="fullName">
                     <label for="name">Student ID: </label>
                     <input id="name" type="text" formControlName="studentID">
                     <label for="name">Class: </label>
                     <input id="name" type="text" formControlName="class">
-                </form>
+                </form> -->
+                <app-criteria-search [form]="criteriaForm" [tableName]="childComponentName"></app-criteria-search>
             </mat-card-subtitle>
         </mat-card-title-group>
         <mat-card-content>

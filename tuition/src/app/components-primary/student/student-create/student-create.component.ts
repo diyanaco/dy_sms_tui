@@ -25,9 +25,6 @@ import { SubSink } from 'subsink';
   styleUrls: ['./student-create.component.css']
 })
 export class StudentCreateComponent implements OnInit , AfterViewInit, OnDestroy{
-  //TODO #30 Seperate message from the model itself
-  //UserModel can be split into response message and actual UserModel
-  //confirmed_user will be of that new UserModel without the response message
   $confirmed_user: Observable<UserModel[]>
   $user_selected: Observable<UserModel>
   $student_list: Observable<StudentModel[]>
@@ -134,32 +131,6 @@ export class StudentCreateComponent implements OnInit , AfterViewInit, OnDestroy
           this.studentForm.get('last_name').setValue(filteredUser.last_name)
           return user[0]
         })).subscribe()
-
-
-      // this.$confirmed_user.pipe(
-      //   filter(x=>x.id == this.user_id),
-      //   map(x=>{
-      //   this.studentForm.get('first_name').setValue(x[0].first_name)
-      //   this.studentForm.get('last_name').setValue(x.last_name)
-      //   this.studentForm.get('fav_sub').setValue(x.fav_sub)
-      // }))
-
-      //TODO #31 Solve autopopulating from observable
-      // this.confirmed_user.pipe(
-      //   filter(x=>x.id == this.userId),
-      //   map(x =>{
-      //     this.first_name_var = x.first_name
-      //     this.last_name_var = x.last_name
-      //     this.studentForm.patchValue({
-      //       first_name: x.first_name,
-      //       last_name : x.last_name
-      //     })
-      //     return x
-      //   })).subscribe(x=>{
-      //     console.log(x.first_name)
-      //     this.studentForm.get('first_name').setValue(x.first_name);
-      //   }
-      //   )
     }
   }
   // onSubjectChange(event: MatSelectChange) {

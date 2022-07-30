@@ -22,6 +22,12 @@ import { UserService } from 'app/_services';
 import { BranchModel } from 'app/model/branch.model';
 import { BranchService } from 'app/_services/branch.service';
 import { GuardianService } from 'app/_services/guardian.service';
+import { ResponseModel } from 'app/model/response.model';
+import { GuardianModel } from 'app/model/guardian.model';
+import { SubjectModel } from 'app/model/subject.model';
+import { LevelModel } from 'app/model/level.model';
+import { StudentModel } from 'app/model/student.model';
+import { UserModel } from 'app/model/user.model';
 
 @Injectable()
 export class PrimaryEffects {
@@ -33,9 +39,9 @@ export class PrimaryEffects {
         mergeMap(() => this.user$.getUserAll()
           .pipe(
             //TODO 
-            map((res: any) => {
-              console.log(res, "confirmed user")
-              return confirmedUserGetAllActionSuccess({ confirmedUser: res.user })
+            map((res: ResponseModel<UserModel>) => {
+              console.log(res, " user")
+              return confirmedUserGetAllActionSuccess({ confirmedUser: res.data })
             }),
             catchError((err) => of(confirmedUserGetAllActionFailure({ message: err })))
           )))
@@ -48,9 +54,9 @@ export class PrimaryEffects {
         mergeMap(() => this.student$.getStudentAll()
           .pipe(
             //TODO 
-            map((res: any) => {
+            map((res: ResponseModel<StudentModel>) => {
               console.log(res)
-              return studentGetAllActionSuccess({ student: res.student })
+              return studentGetAllActionSuccess({ student: res.data })
             }),
             catchError((err) => of(studentGetAllActionFailure({ message: err })))
           )))
@@ -62,9 +68,9 @@ export class PrimaryEffects {
         ofType(levelGetAllActionInit),
         mergeMap(() => this.level$.getLevelAll()
           .pipe(
-            map((res: any) => {
+            map((res: ResponseModel<LevelModel>) => {
               console.log(res)
-              return levelGetAllActionSuccess({ level: res.level })
+              return levelGetAllActionSuccess({ level: res.data })
             }),
             catchError((err) => of(levelGetAllActionFailure({ message: err })))
           )))
@@ -76,9 +82,9 @@ export class PrimaryEffects {
         ofType(subjectGetAllActionInit),
         mergeMap(() => this.subject$.getSubjectAll()
           .pipe(
-            map((res: any) => {
+            map((res: ResponseModel<SubjectModel>) => {
               console.log(res)
-              return subjectGetAllActionSuccess({ subject: res.subject })
+              return subjectGetAllActionSuccess({ subject: res.data })
             }),
             catchError((err) => of(subjectGetAllActionFailure({ message: err })))
           )))
@@ -90,9 +96,9 @@ export class PrimaryEffects {
         ofType(branchGetAllActionInit),
         mergeMap(() => this.branch$.getBranchAll()
           .pipe(
-            map((res: any) => {
+            map((res: ResponseModel<BranchModel>) => {
               console.log(res)
-              return branchGetAllActionSuccess({ branch: res.branch })
+              return branchGetAllActionSuccess({ branch: res.data })
             }),
             catchError((err) => of(branchGetAllActionFailure({ message: err })))
           )))
@@ -104,9 +110,9 @@ export class PrimaryEffects {
         ofType(guardianGetAllActionInit),
         mergeMap(() => this.guardian$.getGuardianAll()
           .pipe(
-            map((res: any) => {
+            map((res: ResponseModel<GuardianModel>) => {
               console.log(res)
-              return guardianGetAllActionSuccess({ guardian: res.guardian })
+              return guardianGetAllActionSuccess({ guardian: res.data })
             }),
             catchError((err) => of(guardianGetAllActionFailure({ message: err })))
           )))

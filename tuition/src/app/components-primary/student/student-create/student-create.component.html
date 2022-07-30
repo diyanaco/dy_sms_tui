@@ -61,7 +61,7 @@
                                         <!-- <mat-select (selectionChange)="onLevelChange($event)"> -->
                                         <mat-select>
                                             <mat-option *ngFor="let level of ($level_list | async)" [value]="level.id">
-                                                {{level.name }} }} {{level.rank }}
+                                                {{level.name }} || {{level.rank }}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -73,7 +73,8 @@
                                         <mat-label>Choose from guardian</mat-label>
                                         <mat-select >
                                             <mat-option *ngFor="let guardian of ($guardian_list | async)"
-                                                [value]="guardian.id">
+                                                [value]="guardian.id"
+                                                formControlName="package_set">
                                                 {{guardian.primary_user_id }} || {{guardian.secondary_user_id }}
                                             </mat-option>
                                         </mat-select>

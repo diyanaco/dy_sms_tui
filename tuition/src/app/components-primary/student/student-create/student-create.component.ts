@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { StudentService } from 'app/_services/student.service';
 import { UserService } from 'app/_services/user.service'
 import { Observable } from 'rxjs';
@@ -49,23 +49,20 @@ export class StudentCreateComponent implements OnInit , AfterViewInit, OnDestroy
   //   level: '',
   //   guardian: '',
   //   package_set: '',
-  //   education_id: ''
+  //   branch_id: ''
   // });
-  studentForm = new UntypedFormGroup({
-    first_name: new UntypedFormControl(''),
-    last_name: new UntypedFormControl(''),
-    fav_sub: new UntypedFormControl,
-    level: new UntypedFormControl,
-    guardian: new UntypedFormControl,
-    package_set: new UntypedFormControl,
-    education_id: new UntypedFormControl
+  studentForm = new FormGroup({
+    fav_sub: new FormControl(''),
+    guardian_id: new FormControl(''),
+    branch_id: new FormControl(''),
+    level_id: new FormControl(''),
+    first_name: new FormControl(''),
+    last_name: new FormControl(''),
+    // package_set_id: new FormControl(''),
   });
   constructor(
-    private $student: StudentService,
-    private $level: LevelService,
-    private $subject: SubjectService,
-    private formBuilder: UntypedFormBuilder,
-    private $user: UserService,
+    private $student : StudentService,
+    private formBuilder: FormBuilder,
     private store: Store<PrimaryState>
   ) { }
 
@@ -117,8 +114,12 @@ export class StudentCreateComponent implements OnInit , AfterViewInit, OnDestroy
     let postJson = {
       user_id: this.userId,
       fav_sub: this.studentForm.get('fav_sub').value,
-      level: this.studentForm.get('level').value
+      guardian_id: this.studentForm.get('guardian_id').value,
+      branch_id: this.studentForm.get('branch_id').value,
+      level_id: this.studentForm.get('level_id').value,
+      // package_set_id: this.studentForm.get('package_set_id').value,
     }
+    console.log(postJson)
     this.$student.postStudent(postJson).subscribe(x => console.log(x))
   }
 

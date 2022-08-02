@@ -30,6 +30,8 @@ const BRANCH_GET_ALL_INIT = '[Branch Component] Retrieve data Init'
 const BRANCH_GET_ALL_SUCCESS = '[Branch Component] Retrieve data Success'
 const BRANCH_GET_ALL_FAILURE = '[Branch Component] Retrieve data Failure'
 
+const LOAD_ON_SELECTED_BRANCH = '[All Component] Retrieve data based on branch'
+
 export const studentGetAllActionInit = createAction(STUDENT_GET_ALL_INIT);
 export const studentGetAllActionSuccess = createAction(STUDENT_GET_ALL_SUCCESS, props<{student : StudentModel[]}>());
 export const studentGetAllActionFailure = createAction(STUDENT_GET_ALL_FAILURE, props<{message : string}>());
@@ -53,4 +55,6 @@ export const guardianGetAllActionFailure = createAction(GUARDIAN_GET_ALL_FAILURE
 export const branchGetAllActionInit = createAction(BRANCH_GET_ALL_INIT);
 export const branchGetAllActionSuccess = createAction(BRANCH_GET_ALL_SUCCESS, props<{branch : BranchModel[]}>());
 export const branchGetAllActionFailure = createAction(BRANCH_GET_ALL_FAILURE, props<{message : string}>());
+
+export const loadOnSelectedBranch = createAction(LOAD_ON_SELECTED_BRANCH, props<{message : string}>());
 

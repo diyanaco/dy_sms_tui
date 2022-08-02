@@ -6,8 +6,8 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridOptions, GridReadyEvent } from 'ag-grid-community'
 import { BranchModel } from 'app/model/branch.model';
 import { StudentModel } from 'app/model/student.model';
-import { selectBranches, selectStudentByBranch, selectStudents } from 'app/store/primary.selector';
-import { PrimaryState } from 'app/store/primary.state';
+import { selectBranches, selectStudentByBranch, selectStudents } from 'app/store/primary-store/primary.selector';
+import { PrimaryState } from 'app/store/primary-store/primary.state';
 import { PassValueGuidService } from 'app/_services/inter-sevice/pass-value.service';
 import { Observable } from 'rxjs';
 import { map, toArray } from 'rxjs/operators'

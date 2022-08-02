@@ -8,12 +8,12 @@ import { filter, map, mergeMap, first, take } from 'rxjs/operators'
 import { MatSelectChange } from '@angular/material/select';
 import { SubjectService } from 'app/_services/subject.service';
 import { LevelService } from 'app/_services/level.service';
-import { PrimaryState } from 'app/store/primary.state';
+import { PrimaryState } from 'app/store/primary-store/primary.state';
 import { Store } from '@ngrx/store';
 import { StudentModel } from 'app/model/student.model';
 import { SubjectModel } from 'app/model/subject.model';
 import { LevelModel } from 'app/model/level.model';
-import { selectBranches, selectGuardians, selectLevels, selectStudents, selectSubjects, selectUsers } from 'app/store/primary.selector';
+import { selectBranches, selectGuardians, selectLevels, selectStudents, selectSubjects, selectUsers } from 'app/store/primary-store/primary.selector';
 import { BranchModel } from 'app/model/branch.model';
 import { GuardianModel } from 'app/model/guardian.model';
 import { SubSink } from 'subsink';

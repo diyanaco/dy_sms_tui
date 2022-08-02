@@ -4,9 +4,11 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { BranchModel } from 'app/model/branch.model';
-import { PrimaryState } from 'app/store/primary.state';
+import { PrimaryState } from 'app/store/primary-store/primary.state';
 import { Store } from '@ngrx/store';
-import { selectBranches } from 'app/store/primary.selector';
+import { selectBranches } from 'app/store/primary-store/primary.selector';
+import { GlobalConstants } from 'app/global-constants';
+import { loadOnSelectedBranch } from 'app/store/primary-store/primary.action';
 
 @Component({
     selector: 'app-navbar',
@@ -129,5 +131,16 @@ export class NavbarComponent implements OnInit {
     logout() {
         localStorage.removeItem('auth_tkn');
         localStorage.removeItem('auth_meta');
+    }
+
+    onChangeBranch(event){
+        GlobalConstants.current_branch = event
+        //TODO #36 Call get by branchid(getbyquery).
+        // Need to take in account multiple branches selected
+        // On selected branch(es) we will call the 
+        // getbyquery based on branch(es)
+
+        //Load all into store based on branchId
+        this.store.dispatch(loadOnSelectedBranch())
     }
 }

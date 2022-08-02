@@ -23,9 +23,9 @@ import { MatSliderModule} from "@angular/material/slider"
 import {MatCardModule} from '@angular/material/card';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
-import { primaryReducer } from './store/primary.reducer';
+import { primaryReducer } from './store/primary-store/primary.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { PrimaryEffects } from './store/primary.effect';
+import { PrimaryEffects } from './store/primary-store/primary.effect';
 
 @NgModule({
   declarations: [

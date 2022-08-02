@@ -56,5 +56,5 @@ export const branchGetAllActionInit = createAction(BRANCH_GET_ALL_INIT);
 export const branchGetAllActionSuccess = createAction(BRANCH_GET_ALL_SUCCESS, props<{branch : BranchModel[]}>());
 export const branchGetAllActionFailure = createAction(BRANCH_GET_ALL_FAILURE, props<{message : string}>());
 
-export const loadOnSelectedBranch = createAction(LOAD_ON_SELECTED_BRANCH, props<{message : string}>());
+export const loadOnSelectedBranch = createAction(LOAD_ON_SELECTED_BRANCH);
 

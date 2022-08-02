@@ -9,10 +9,10 @@ import {
 } from '@angular/animations';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { PrimaryState } from 'app/store/primary.state';
-import { branchGetAllActionInit, confirmedUserGetAllActionInit, guardianGetAllActionInit, levelGetAllActionInit, studentGetAllActionInit, subjectGetAllActionInit } from 'app/store/primary.action';
+import { PrimaryState } from 'app/store/primary-store/primary.state';
+import { branchGetAllActionInit, confirmedUserGetAllActionInit, guardianGetAllActionInit, levelGetAllActionInit, studentGetAllActionInit, subjectGetAllActionInit } from 'app/store/primary-store/primary.action';
 import { SubSink } from 'subsink';
-import { selectBranches } from 'app/store/primary.selector';
+import { selectBranches } from 'app/store/primary-store/primary.selector';
 import { Observable } from 'rxjs';
 import { BranchModel } from 'app/model/branch.model';
 import { MatSelectChange } from '@angular/material/select';
@@ -65,12 +65,14 @@ export class TableLayoutComponent implements OnInit {
 
   ngOnInit(): void {
     //Init store
-    this.store.dispatch(confirmedUserGetAllActionInit())
-    this.store.dispatch(studentGetAllActionInit())
-    this.store.dispatch(levelGetAllActionInit())
-    this.store.dispatch(subjectGetAllActionInit())
-    this.store.dispatch(guardianGetAllActionInit())
-    this.store.dispatch(branchGetAllActionInit())
+    //This is wrong, we should load all data at first, we will load based 
+    //on branch.
+    // this.store.dispatch(confirmedUserGetAllActionInit())
+    // this.store.dispatch(studentGetAllActionInit())
+    // this.store.dispatch(levelGetAllActionInit())
+    // this.store.dispatch(subjectGetAllActionInit())
+    // this.store.dispatch(guardianGetAllActionInit())
+    // this.store.dispatch(branchGetAllActionInit())
 
     //Select branch
     this.$branch_list = this.store.select(selectBranches)

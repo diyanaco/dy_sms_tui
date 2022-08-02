@@ -16,7 +16,8 @@ import {
   branchGetAllActionFailure,
   guardianGetAllActionInit,
   guardianGetAllActionSuccess,
-  guardianGetAllActionFailure
+  guardianGetAllActionFailure,
+  loadOnSelectedBranch
 } from './primary.action';
 import { UserService } from 'app/_services';
 import { BranchModel } from 'app/model/branch.model';
@@ -32,25 +33,10 @@ import { UserModel } from 'app/model/user.model';
 @Injectable()
 export class SelectedBranchEffects {
 
-  loadConfirmedUser$ = createEffect(() => {
+  initLoadOnSelectedBranch$ = createEffect(() => {
     return this.actions$
       .pipe(
-        ofType(confirmedUserGetAllActionInit),
-        mergeMap(() => this.user$.getUserAll()
-          .pipe(
-            //TODO 
-            map((res: ResponseModel<UserModel>) => {
-              console.log(res, " user")
-              return confirmedUserGetAllActionSuccess({ confirmedUser: res.data })
-            }),
-            catchError((err) => of(confirmedUserGetAllActionFailure({ message: err })))
-          )))
-  })
-
-  loadStudent$ = createEffect(() => {
-    return this.actions$
-      .pipe(
-        ofType(studentGetAllActionInit),
+        ofType(loadOnSelectedBranch),
         mergeMap(() => this.student$.getStudentAll()
           .pipe(
             //TODO 

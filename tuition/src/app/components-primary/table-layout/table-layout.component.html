@@ -12,7 +12,26 @@
                     <label for="name">Class: </label>
                     <input id="name" type="text" formControlName="class">
                 </form> -->
-                <app-criteria-search [form]="criteriaForm" [tableName]="childComponentName"></app-criteria-search>
+                <div class="row space-between" >
+                    <!-- This project container governs all settings that encompases the whole system 
+                        It is the umbrella so it should be available in all components -->
+                    <div class="col-md-3" id="project_container">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Choose from branch</mat-label>
+                            <mat-select (selectionChange)="onBranchChange($event)">
+                            <!-- <mat-select> -->
+                                <mat-option *ngFor="let branch of ($branch_list | async)" [value]="branch.id">
+                                    {{branch.name }} || {{branch.type }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>   
+                    </div>
+                    <div class="col-md-4">
+                        <app-criteria-search [form]="criteriaForm" [tableName]="childComponentName">
+                        </app-criteria-search>
+                    </div>
+                </div>
+
             </mat-card-subtitle>
         </mat-card-title-group>
         <mat-card-content>
@@ -27,13 +46,13 @@
                     <p>Name : Muhammad Zaim</p>
                 </div>
             </div> -->
-            <!-- <nav>
+        <!-- <nav>
         <button type="button" (click)="toggle()">Toggle Open/Close</button>
     </nav> -->
-            <!-- <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+        <!-- <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
         <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
     </div> -->
-            <!-- <button mat-button color="primary" class="button-sandwich" (click)="toggle()">Create</button>
+        <!-- <button mat-button color="primary" class="button-sandwich" (click)="toggle()">Create</button>
             <div fxLayout="row" fxLayoutAlign="space-around center" *ngIf="!isOpen">
                 <div style="border-style: solid">Hello first column</div>
                 <div style="border-style: solid">Hello second column</div>

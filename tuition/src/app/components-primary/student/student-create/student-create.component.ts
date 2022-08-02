@@ -17,6 +17,7 @@ import { selectBranches, selectGuardians, selectLevels, selectStudents, selectSu
 import { BranchModel } from 'app/model/branch.model';
 import { GuardianModel } from 'app/model/guardian.model';
 import { SubSink } from 'subsink';
+import { PackageSetModel } from 'app/model/package-set.model';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class StudentCreateComponent implements OnInit , AfterViewInit, OnDestroy
   $level_list: Observable<LevelModel[]>
   $branch_list: Observable<BranchModel[]>
   $guardian_list: Observable<GuardianModel[]>
+  $package_set_list : Observable<PackageSetModel[]>
   tempUserArray: any[]
   tempLevelArray: any[]
   tempSubjectArray: any[]
@@ -49,13 +51,13 @@ export class StudentCreateComponent implements OnInit , AfterViewInit, OnDestroy
   //   branch_id: ''
   // });
   studentForm = new FormGroup({
-    fav_sub: new FormControl(''),
-    guardian_id: new FormControl(''),
-    branch_id: new FormControl(''),
-    level_id: new FormControl(''),
-    first_name: new FormControl(''),
-    last_name: new FormControl(''),
-    // package_set_id: new FormControl(''),
+    fav_sub: new FormControl(null),
+    guardian_id: new FormControl(null),
+    branch_id: new FormControl(null),
+    level_id: new FormControl(null),
+    first_name: new FormControl(null),
+    last_name: new FormControl(null),
+    package_set_id: new FormControl(''),
   });
   constructor(
     private $student : StudentService,

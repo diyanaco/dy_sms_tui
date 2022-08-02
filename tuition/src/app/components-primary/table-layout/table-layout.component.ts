@@ -11,6 +11,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { PrimaryState } from 'app/store/primary.state';
 import { branchGetAllActionInit, confirmedUserGetAllActionInit, guardianGetAllActionInit, levelGetAllActionInit, studentGetAllActionInit, subjectGetAllActionInit } from 'app/store/primary.action';
+import { SubSink } from 'subsink';
+import { selectBranches } from 'app/store/primary.selector';
+import { Observable } from 'rxjs';
+import { BranchModel } from 'app/model/branch.model';
+import { MatSelectChange } from '@angular/material/select';
+import { PassValueGuidService } from 'app/_services/inter-sevice/pass-value.service';
 
 @Component({
   selector: 'app-table-layout',
@@ -39,6 +45,8 @@ import { branchGetAllActionInit, confirmedUserGetAllActionInit, guardianGetAllAc
   // ],
 })
 export class TableLayoutComponent implements OnInit {
+  private subs = new SubSink()
+  $branch_list: Observable<BranchModel[]>
   isOpen = true;
   childComponentName: string
   //TODO: #25 Generate a dynamic search criteria form based on specific listing component columns
@@ -51,16 +59,21 @@ export class TableLayoutComponent implements OnInit {
   //   this.isOpen = !this.isOpen;
   // }
   constructor(
-    private store : Store<PrimaryState>
+    private store: Store<PrimaryState>,
+    private passGuid : PassValueGuidService
   ) { }
 
   ngOnInit(): void {
+    //Init store
     this.store.dispatch(confirmedUserGetAllActionInit())
     this.store.dispatch(studentGetAllActionInit())
     this.store.dispatch(levelGetAllActionInit())
     this.store.dispatch(subjectGetAllActionInit())
     this.store.dispatch(guardianGetAllActionInit())
     this.store.dispatch(branchGetAllActionInit())
+
+    //Select branch
+    this.$branch_list = this.store.select(selectBranches)
   }
 
   componentAdded($event) {
@@ -78,5 +91,12 @@ export class TableLayoutComponent implements OnInit {
         break
     }
 
+  }
+
+  onBranchChange(event: MatSelectChange) {
+    if (event) {
+      console.log(event.value)
+      this.passGuid.addGuid(event.value)
+    }
   }
 }

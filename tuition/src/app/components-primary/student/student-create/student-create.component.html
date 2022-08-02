@@ -13,7 +13,7 @@
                                 <div class="col-md-6">
                                     <mat-form-field appearance="fill">
                                         <mat-label>Choose from regitered user</mat-label>
-                                        <mat-select (selectionChange)="onUserChange($event)">
+                                        <mat-select (selectionChange)="onUserChange($event)" formControlName="guardian_id">
                                             <mat-option *ngFor="let confirmed_user of ($confirmed_user | async)"
                                                 [value]="confirmed_user.id">
                                                 {{confirmed_user.first_name }} {{confirmed_user.last_name}}
@@ -36,22 +36,17 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <!-- <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Favorite Subject" type="text"
-                                            formControlName="fav_sub">
-                                    </mat-form-field> -->
+                                <!-- <div class="col-md-6">
                                     <mat-form-field appearance="fill">
                                         <mat-label>Choose from subjects</mat-label>
-                                        <!-- <mat-select (selectionChange)="onSubjectChange($event)"> -->
-                                        <mat-select>
+                                        <mat-select formControlName="subject_id">
                                             <mat-option *ngFor="let subject of ($subject_list | async)"
                                                 [value]="subject.id">
                                                 {{subject.name }}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
-                                </div>
+                                </div> -->
                                 <div class="col-md-6">
                                     <!-- <mat-form-field class="example-full-width">
                                         <input matInput placeholder="Level" type="text" formControlName="level">
@@ -59,7 +54,7 @@
                                     <mat-form-field appearance="fill">
                                         <mat-label>Choose from level</mat-label>
                                         <!-- <mat-select (selectionChange)="onLevelChange($event)"> -->
-                                        <mat-select>
+                                        <mat-select formControlName="level_id">
                                             <mat-option *ngFor="let level of ($level_list | async)" [value]="level.id">
                                                 {{level.name }} || {{level.rank }}
                                             </mat-option>
@@ -71,28 +66,28 @@
                                 <div class="col-md-4">
                                     <mat-form-field appearance="fill">
                                         <mat-label>Choose from guardian</mat-label>
-                                        <mat-select >
+                                        <mat-select formControlName="guardian_id">
                                             <mat-option *ngFor="let guardian of ($guardian_list | async)"
                                                 [value]="guardian.id"
-                                                formControlName="package_set">
+                                                >
                                                 {{guardian.primary_user_id }} || {{guardian.secondary_user_id }}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
                                         <input matInput placeholder="Package Set" type="text"
                                             formControlName="package_set">
                                     </mat-form-field>
-                                </div>
+                                </div> -->
                                 <div class="col-md-4">
                                     <mat-form-field appearance="fill">
-                                        <mat-label>Choose from branch</mat-label>
-                                        <mat-select >
-                                            <mat-option *ngFor="let branch of ($branch_list | async)"
-                                                [value]="branch.id">
-                                                {{branch.name }} || {{branch.type }}
+                                        <mat-label>Choose from package set</mat-label>
+                                        <mat-select formControlName="package_set_id">
+                                            <mat-option *ngFor="let package_set of ($package_set_list | async)"
+                                                [value]="package_set.id">
+                                                {{package_set.name }}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>

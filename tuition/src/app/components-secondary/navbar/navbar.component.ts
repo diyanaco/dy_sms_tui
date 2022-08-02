@@ -2,6 +2,11 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { BranchModel } from 'app/model/branch.model';
+import { PrimaryState } from 'app/store/primary.state';
+import { Store } from '@ngrx/store';
+import { selectBranches } from 'app/store/primary.selector';
 
 @Component({
     selector: 'app-navbar',
@@ -15,11 +20,16 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     private $layer: any
-    constructor(location: Location, private element: ElementRef, private router: Router) {
+    constructor(
+        location: Location, 
+        private element: ElementRef, 
+        private router: Router,
+        private store : Store<PrimaryState>
+        ) {
         this.location = location;
         this.sidebarVisible = false;
     }
-
+    $branch_list : Observable<BranchModel[]>
     ngOnInit() {
         this.listTitles = ROUTES.filter(listTitle => listTitle);
         console.log(this.listTitles)
@@ -33,6 +43,7 @@ export class NavbarComponent implements OnInit {
                 this.mobile_menu_visible = 0;
             }
         });
+        this.$branch_list = this.store.select(selectBranches)
     }
 
     sidebarOpen() {

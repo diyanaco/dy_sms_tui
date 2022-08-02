@@ -1,5 +1,5 @@
 import { OnInit, OnDestroy, Component, Input } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 //TODO: #26 Work on CriteriaSearchCompoennt
 @Component({
   selector: "app-criteria-search",
@@ -12,6 +12,11 @@ export class CriteriaSearchComponent implements OnInit, OnDestroy {
         console.log(ctrl)
       })
   };
+  criteriaForm = new FormGroup({
+    fullName: new FormControl(null),
+    studentId: new FormControl(null),
+    className: new FormControl(null),
+  });
   @Input() tableName : string;
   ngOnInit() {
     console.log(this.form)

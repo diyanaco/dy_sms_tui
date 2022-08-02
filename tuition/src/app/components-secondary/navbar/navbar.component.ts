@@ -135,8 +135,7 @@ export class NavbarComponent implements OnInit {
 
     onChangeBranch(event){
         GlobalConstants.current_branch = event
-        //TODO #36 Call get by branchid(getbyquery).
-        // Need to take in account multiple branches selected
+        // TODO #38 Need to take in account multiple branches selected
         // On selected branch(es) we will call the 
         // getbyquery based on branch(es)
 

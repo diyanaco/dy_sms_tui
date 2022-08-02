@@ -92,7 +92,6 @@ export class TableLayoutComponent implements OnInit {
         this.childComponentName = "Subject"
         break
     }
-
   }
 
   onBranchChange(event: MatSelectChange) {
